@@ -1,0 +1,45 @@
+LeetCode Solutions
+
+
+## Best Time to Buy and Sell Stock
+
+### Problem Description
+
+You are given an array prices where prices[i] is the price of a given stock on the i-th day.
+
+You want to maximize your profit by choosing *a single day to buy one stock* and *a different day in the future to sell that stock*.
+
+Return the *maximum profit* you can achieve from this transaction.  
+If no profit is possible, return 0.
+
+
+### Solution Explanation
+
+This solution uses a *single pass greedy approach* to track the lowest buying price and the maximum possible profit.
+
+- Start by assuming the first price is the lowest (buy_price).
+- Iterate through the list starting from the second day:
+  - If the current price is lower than buy_price, update buy_price.
+  - Otherwise, calculate the profit if selling today (current price - buy_price) and update the maximum profit found so far.
+
+This approach ensures we always *buy at the lowest possible price before selling* and keeps track of the best transaction throughout the list.
+
+The solution runs in linear time, scanning the list once.
+
+
+
+### Time and Space Complexity
+
+- *Time Complexity:* O(n) – Only one pass through the list is needed.
+- *Space Complexity:* O(1) – Only two variables are used for tracking.
+
+
+
+
+Example
+
+Input: prices = [7, 1, 5, 3, 6, 4]
+Output: 5
+
+# Buy on day 2 (price = 1), sell on day 5 (price = 6)
+# Profit = 6 - 1 = 5
