@@ -1,0 +1,30 @@
+LeetCode Solutions
+
+
+
+## Merge Intervals
+
+### Problem Description
+
+Given an array of intervals where intervals[i] = [start, end], merge all overlapping intervals and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
+
+
+### Solution Explanation
+
+The solution follows these steps:
+
+1. *Sort* the intervals by their start time.  
+2. Initialize an empty list merged to store the result.  
+3. Iterate through the sorted intervals:
+   - If merged is empty or the current interval does not overlap with the last interval in merged, simply append it.  
+   - Otherwise, there is an overlap → update the end of the last interval in merged with the maximum end value between the two overlapping intervals.  
+
+This ensures that overlapping intervals are merged, and non-overlapping intervals remain separate.
+
+
+### Time and Space Complexity
+
+- *Time Complexity:* O(n log n) – Sorting the intervals dominates the runtime.  
+- *Space Complexity:* O(n) – In the worst case, all intervals are non-overlapping and stored in the result list.  
+
