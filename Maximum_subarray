@@ -1,0 +1,38 @@
+LeetCode Solutions
+
+
+
+## Maximum Subarray 
+
+Given an integer array nums, find the *contiguous subarray* (containing at least one number) which has the *largest sum*, and return its sum.
+
+
+### Solution Explanation
+
+This solution uses *Kadane’s Algorithm*.
+
+- Maintain two variables:
+  - total: the current running subarray sum.
+  - res: the maximum sum found so far.
+- Iterate through the array:
+  - Add the current element to total.
+  - If total becomes negative, reset it to 0 (because starting a new subarray would yield a better sum).
+  - Update res with the maximum of res and total.
+
+This ensures that we always consider the best possible contiguous subarray up to each point.
+
+
+### Time and Space Complexity
+
+- *Time Complexity:* O(n) – Only one pass through the array is required.  
+- *Space Complexity:* O(1) – Only two variables are used for tracking.  
+
+
+
+Example
+
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+
+Explanation: The subarray [4,-1,2,1] has the largest sum = 6.
+
