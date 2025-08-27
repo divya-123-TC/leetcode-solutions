@@ -1,0 +1,49 @@
+Problem Description
+
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that:
+
+i != j != k
+
+nums[i] + nums[j] + nums[k] == 0
+
+
+The solution set must not contain duplicate triplets.
+
+
+
+
+Solution Explanation
+
+The solution follows these steps:
+
+1. Sort the array nums to simplify duplicate handling and allow two-pointer traversal.
+
+
+2. Iterate through nums using index i:
+
+Skip duplicate values for nums[i] to avoid repeated triplets.
+
+Use two pointers, j (left) and k (right), to find pairs such that nums[i] + nums[j] + nums[k] == 0.
+
+
+
+3. Adjust pointers:
+
+If the sum is greater than 0, decrement k.
+
+If the sum is less than 0, increment j.
+
+If the sum equals 0, add the triplet to the result and move both pointers while skipping duplicates.
+
+
+
+
+This ensures that all unique triplets are found efficiently.
+
+
+
+Time and Space Complexity
+
+Time Complexity: O(n²) – Sorting takes O(n log n) and the two-pointer traversal takes O(n²).
+
+Space Complexity: O(1) – Apart from the output list, no extra space is used.
