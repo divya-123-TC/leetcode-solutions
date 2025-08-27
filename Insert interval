@@ -1,0 +1,54 @@
+Insert Interval
+
+Problem Description
+
+You are given an array of non-overlapping intervals sorted by their start time, where intervals[i] = [start, end].
+You are also given a new interval newInterval = [start, end] that may overlap with existing intervals.
+
+Insert newInterval into intervals such that the list remains sorted and non-overlapping. Return the new list of intervals.
+
+
+
+
+Solution Explanation
+
+The solution follows these steps:
+
+1. Add intervals that come before newInterval
+
+While the current interval ends before newInterval starts, add it to the result list.
+
+
+
+2. Merge overlapping intervals
+
+If the current interval overlaps with newInterval, merge them by updating:
+
+newInterval[0] = min(newInterval[0], interval[0])
+
+newInterval[1] = max(newInterval[1], interval[1])
+
+
+
+
+3. Add merged interval
+
+Once all overlaps are processed, append the merged newInterval to the result list.
+
+
+
+4. Add remaining intervals
+
+Append all intervals that come after newInterval.
+
+
+
+
+
+
+
+Time and Space Complexity
+
+Time Complexity: O(n) – Each interval is visited at most once.
+
+Space Complexity: O(n) – Result list stores all intervals.
