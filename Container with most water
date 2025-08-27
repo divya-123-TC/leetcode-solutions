@@ -1,0 +1,49 @@
+Container With Most Water
+
+Problem Description
+
+You are given an integer array height of length n. Each element represents a vertical line on the x-axis with height[i] as its height.
+
+Two lines, together with the x-axis, form a container that can hold water. Return the maximum amount of water a container can store.
+
+
+
+Solution Explanation
+
+The solution uses the two-pointer approach:
+
+1. Initialize two pointers:
+
+left at the start (0)
+
+right at the end (n - 1)
+
+
+
+2. Compute the area formed between the two lines:
+
+
+
+area = (right - left) \times \min(height[left], height[right])
+
+3. Update max_area with the maximum value found so far.
+
+
+4. Move the pointer corresponding to the shorter line inward:
+
+If height[left] < height[right], increment left.
+
+Otherwise, decrement right.
+
+
+
+
+This ensures we explore all possible containers efficiently.
+
+
+
+Time and Space Complexity
+
+Time Complexity: O(n) – Each pointer moves at most n steps.
+
+Space Complexity: O(1) – Only constant extra space is used
