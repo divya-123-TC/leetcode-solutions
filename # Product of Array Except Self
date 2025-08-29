@@ -1,0 +1,44 @@
+# Product of Array Except Self
+
+## Problem Statement
+Given an integer array nums, return an array answer such that answer[i] is equal to the **product of all elements of nums except nums[i]`.  
+
+You must solve it *without using division* and in *O(n)* time.
+
+
+
+## Solution Explanation
+
+We cannot use division, so we use *prefix and suffix products*:
+
+### Steps:
+
+1. *Initialize*
+   - Create an output array res filled with 1.
+
+2. *Left Pass (prefix product)*
+   - Keep a variable left = 1.
+   - Traverse left → right.
+   - For each index i:
+     - Set res[i] *= left → store product of all elements to the left.
+     - Update left *= nums[i].
+
+3. *Right Pass (suffix product)*
+   - Keep a variable right = 1.
+   - Traverse right → left.
+   - For each index i:
+     - Set res[i] *= right → multiply with product of all elements to the right.
+     - Update right *= nums[i].
+
+4. *Result*
+   - After both passes, res[i] contains product of all elements except nums[i].
+
+
+
+## Complexity Analysis
+- *Time Complexity:* O(n) → Two passes over the array.  
+- *Space Complexity:* O(1) → Ignoring the output array, no extra space is used.
+
+
+
+        return res
