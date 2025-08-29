@@ -1,0 +1,40 @@
+# Subarray Sum Equals K
+
+## Problem Statement
+Given an array of integers nums and an integer k, return the *total number of subarrays* whose sum is equal to k.
+
+
+
+
+
+## Solution Explanation
+
+We need to count *continuous subarrays* that sum up to k.  
+A brute force approach would check all subarrays (O(n^2)), but we can solve it in *O(n)* using a *prefix sum + hashmap*.
+
+### Steps:
+
+1. *Prefix Sum Idea*
+   - Let total be the running sum of elements while iterating.
+   - If there exists a previous prefix sum (total - k), then the subarray between that point and the current index has sum k.
+
+2. **HashMap (sub_num)**
+   - Store counts of prefix sums encountered so far.
+   - Initialize with {0:1} → this accounts for subarrays starting from index 0.
+
+3. **Iterate over nums**
+   - Add current number to total.
+   - Check if (total - k) exists in sub_num.  
+     - If yes → it means a subarray sum equals k.  
+     - Increase count by sub_num[total - k] (since there could be multiple such subarrays).
+   - Update the hashmap: sub_num[total] += 1.
+
+4. *Result*
+   - After the loop, count contains the total number of subarrays summing to k.
+
+
+
+## Complexity Analysis
+- *Time Complexity:* O(n) → Single pass over the array.  
+- *Space Complexity:* O(n) → HashMap to store prefix sums.  
+
