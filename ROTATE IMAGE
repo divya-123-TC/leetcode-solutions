@@ -1,0 +1,65 @@
+
+#ROTATE IMAGE
+
+
+
+
+Problem Description
+
+Given an n x n 2D matrix, rotate it 90 degrees clockwise in-place (no extra space).
+
+
+
+Solution Explanation
+
+1. Transpose the matrix
+
+Swap matrix[i][j] with matrix[j][i] for all i < j
+
+This flips the matrix over its diagonal
+
+
+
+2. Reverse each row
+
+After transposing, reverse every row to complete the 90° clockwise rotation
+
+
+
+
+Key Idea:
+
+Transpose converts rows to columns
+
+Reverse rows to rotate clockwise
+
+
+
+
+
+Example
+
+Input:
+
+[[1,2,3],
+ [4,5,6],
+ [7,8,9]]
+
+After transpose:
+
+[[1,4,7],
+ [2,5,8],
+ [3,6,9]]
+
+After row reverse:
+
+[[7,4,1],
+ [8,5,2],
+ [9,6,3]]
+
+
+Time & Space Complexity
+
+Time: O(n²) → Visit every element twice
+
+Space: O(1) → In-place, no extra array
