@@ -1,0 +1,68 @@
+Search in Rotated Sorted Array
+
+
+Problem Description
+
+Given a rotated sorted array nums and a target, return the index of target.
+
+If target is not found → return -1
+
+Solve in O(log n) time using binary search.
+
+
+
+
+
+Solution Explanation
+
+1. Initialize pointers
+
+left = 0, right = len(nums) - 1
+
+
+
+2. Binary search loop while left ≤ right:
+
+Calculate mid = (left + right) // 2
+
+If nums[mid] == target → return mid
+
+
+
+3. Check which half is sorted
+
+Left half sorted → nums[left] ≤ nums[mid]
+
+If target is in left half → right = mid - 1
+
+Else → left = mid + 1
+
+
+Right half sorted → else
+
+If target is in right half → left = mid + 1
+
+Else → right = mid - 1
+
+
+
+
+4. Target not found → return -1
+
+
+
+
+
+
+Example
+
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+
+
+
+Time & Space Complexity
+
+Time: O(log n) → Binary search
+
+Space: O(1) → Constant extra space
