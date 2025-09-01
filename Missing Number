@@ -1,0 +1,55 @@
+# Missing Number 
+
+## Problem Description
+Given an array nums containing *n distinct numbers* taken from 0, 1, 2, ..., n,  
+find the *one number that is missing* from the array.
+
+
+## Solution Explanation (Math Approach)
+
+We use a simple trick with addition and subtraction to find the missing number.
+
+1. Initialize result
+- Start with res = len(nums) (this represents the extra index n).
+
+ 2. Iterate through array
+- For each index i and element nums[i]:  
+  - Add the index i to res  
+  - Subtract the value nums[i] from res  
+
+This ensures all numbers cancel out except the missing one.  
+
+ 3. Return result
+- After the loop, res will hold the missing number.
+
+
+
+
+
+
+Example
+
+Input:
+nums = [3,0,1]
+
+Steps:
+
+res = 3 (length of nums = 3)
+
+i = 0 → res = 3 + 0 - 3 = 0
+
+i = 1 → res = 0 + 1 - 0 = 1
+
+i = 2 → res = 1 + 2 - 1 = 2
+
+
+Output:
+Missing Number = 2
+
+-
+
+Time & Space Complexity
+
+Time: O(n) → single loop through array
+
+Space: O(1) → only one variable res
