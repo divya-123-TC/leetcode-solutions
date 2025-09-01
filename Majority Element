@@ -1,0 +1,72 @@
+Majority Element 
+
+## Problem Description
+Given an integer array nums, return the *majority element*.  
+The majority element is the element that appears *more than ⌊n/2⌋ times*.  
+It is guaranteed that a majority element always exists.
+---
+
+## Solution Explanation (Boyer–Moore Voting Algorithm)
+
+We use a counting strategy with a candidate and a count:
+
+ 1. Initialize
+- candidate = 0
+- count = 0
+
+ 2. Iterate through array
+For each number num:
+- If count == 0, set candidate = num  
+- If num == candidate, increment count  
+- Else, decrement count  
+
+Why it works?  
+- The majority element will cancel out all minority elements.  
+- Since the majority element occurs more than n/2 times, it will always remain as the final candidate.
+
+ 3. Return candidate
+After iterating through the entire array, candidate is the majority element.
+
+
+
+
+
+Example
+
+Input:
+nums = [3,2,3]
+
+Steps:
+
+Start: candidate = 0, count = 0
+
+num = 3 → count = 0 → candidate = 3, count = 1
+
+num = 2 → candidate = 3 ≠ 2 → count = 0
+
+num = 3 → count = 0 → candidate = 3, count = 1
+
+
+Output:
+Majority Element = 3
+
+
+
+
+Another Input:
+nums = [2,2,1,1,1,2,2]
+
+Final candidate = 2
+
+
+Output:
+Majority Element = 2
+
+
+
+
+Time & Space Complexity
+
+Time: O(n) → single pass through array
+
+Space: O(1) → only two variables (candidate, count)
