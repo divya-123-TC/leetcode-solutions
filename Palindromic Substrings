@@ -1,0 +1,75 @@
+Palindromic Substrings 
+
+
+
+Problem
+
+Given a string s, return the number of palindromic substrings in it.
+
+A string is a palindrome when it reads the same forward and backward.
+
+Different starting indices or ending indices are counted as different substrings even if they consist of the same characters.
+
+
+
+Explanation 
+
+Palindromes can be expanded around a center.
+
+Each index i in the string can be:
+
+Odd center: expand around (i, i) → palindromes like "aba".
+
+Even center: expand around (i, i+1) → palindromes like "aa".
+
+
+The helper count_palindrome expands outward while characters match and counts valid palindromes.
+
+Add up all counts to get the total.
+
+
+
+
+Steps Example (s = "aaa")
+
+1. i=0 → odd → "a" 
+→ even → "aa" 
+
+
+2. i=1 → odd → "a", "aaa" 
+→ even → "aa" 
+
+
+3. i=2 → odd → "a" 
+→ even → no match
+
+
+
+ Total palindromic substrings = 6
+
+(They are: "a", "a", "a", "aa", "aa", "aaa")
+
+
+
+
+Formula / Key Idea
+
+Expand from center while characters match:
+
+
+while left >= 0 and right < len(s) and s[left] == s[right]:
+    count += 1
+    left -= 1
+    right += 1
+
+Count both odd and even palindromes at each index.
+
+
+
+
+
+Time & Space Complexity
+
+Time Complexity: O(n^2) – each expansion can take up to O(n) and we do it for n centers.
+
+Space Complexity: O(1) – only counters and pointers are used.
