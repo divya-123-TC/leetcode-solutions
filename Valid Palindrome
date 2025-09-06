@@ -1,0 +1,80 @@
+Valid Palindrome 
+
+
+
+Problem
+
+A phrase is a palindrome if, after converting all uppercase letters into lowercase and removing all non-alphanumeric characters, it reads the same forward and backward.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+
+
+
+
+Explanation 
+
+Use two pointers:
+
+left starts from beginning of string
+
+right starts from end of string
+
+
+Skip any non-alphanumeric characters (isalnum() check).
+
+Compare lowercase versions of both characters.
+
+If mismatch → return False.
+
+If match → move inward (left += 1, right -= 1).
+
+
+If all characters match, return True.
+
+
+
+
+
+Steps Example (s = "A man, a plan, a canal: Panama")
+
+Cleaned version (conceptually): "amanaplanacanalpanama"
+
+Compare step by step:
+
+'a' == 'a' 
+'m' == 'm' 
+
+'a' == 'a' 
+
+... continue until pointers meet in the middle.
+
+
+All matched → palindrome 
+
+
+ Output: True
+
+
+
+
+Formula / Key Idea
+
+Ignore non-alphanumeric characters.
+
+Compare characters in lowercase.
+
+Palindrome check condition:
+
+
+s[left].lower() == s[right].lower()
+
+
+
+
+Time & Space Complexity
+
+Time Complexity: O(n)
+Each character is visited at most once.
+
+Space Complexity: O(1)
+Uses only two pointers, no extra data structures.
