@@ -1,0 +1,72 @@
+Longest Palindromic Substring 
+
+
+
+
+Problem
+
+Given a string s, return the longest palindromic substring in s.
+
+A palindrome is a string that reads the same forward and backward.
+
+
+
+Explanation 
+
+Every palindrome can be expanded from a center:
+
+Odd-length: center at one character.
+
+Even-length: center between two characters.
+
+
+For each index i, expand around both possibilities and find longest length.
+
+Update start and end whenever a longer palindrome is found.
+
+Return substring s[start:end+1].
+
+
+
+Steps Example (s = "babad")
+
+1. i=0 → expand around 'b' → "b" (odd), "ba" (even) → max=1
+
+
+2. i=1 → expand around 'a' → "bab" (odd), "ab" (even) → max=3 → update result "bab"
+
+
+3. i=2 → expand around 'b' → "aba" (odd), "ba" (even) → max=3 → result still valid
+
+
+4. i=3 → expand → "ada" (odd) → max=3
+
+
+5. i=4 → expand → "d" (odd) → max=1
+
+
+
+Output: "bab" or "aba" (both are valid longest palindromes)
+
+
+
+
+Formula / Key Idea
+
+Palindrome length from center expansion =
+
+
+while left >= 0 and right < len(s) and s[left] == s[right]:
+    expand outward
+
+Final length returned = right - left - 1.
+
+
+
+
+
+Time & Space Complexity
+
+Time Complexity: O(n^2) – for each index, expand outward in both directions.
+
+Space Complexity: O(1) – only pointers used.
