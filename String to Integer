@@ -1,0 +1,121 @@
+String to Integer (atoi) 
+
+
+
+
+Problem
+
+Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer.
+
+Rules:
+
+1. Discard leading whitespace.
+
+
+2. Check for an optional + or - sign.
+
+
+3. Read digits until a non-digit is found.
+
+
+4. Clamp the result within the 32-bit signed integer range:
+
+[-2³¹, 2³¹ − 1] = [−2147483648, 2147483647]
+
+
+
+
+Return the integer result.
+
+
+
+            
+
+
+
+
+Explanation 
+
+1. Skip whitespaces until the first non-space character.
+
+
+2. Check sign (+ or -), default is positive.
+
+
+3. Build number by reading consecutive digits.
+
+
+4. Clamp result if it goes out of 32-bit signed integer range.
+
+
+5. Stop parsing at the first non-digit character.
+
+
+
+
+
+Steps Example (s = "   -42")
+
+Skip spaces → pointer at '-'.
+
+Sign = -1.
+
+Parse digits: "42" → res = 42.
+
+Apply sign: -42.
+
+
+ Output: -42
+
+
+
+Steps Example 2 (s = "4193 with words")
+
+Parse digits "4193".
+
+Stop at " " (non-digit).
+
+Result = 4193.
+
+
+Output: 4193
+
+
+
+
+Steps Example 3 (s = "91283472332")
+
+Parse digits "91283472332".
+
+Result exceeds 2³¹−1 = 2147483647.
+
+Clamp to max integer.
+
+
+ Output: 2147483647
+
+
+
+
+Formula / Key Idea
+
+Convert manually (no int() casting for whole string).
+
+Palindrome-like digit expansion:
+
+
+res = res * 10 + digit
+
+Clamp using:
+
+
+if res*sign <= -2*31 → return -2*31
+if res*sign >= 2*31-1 → return 2*31-1
+
+
+
+Time & Space Complexity
+
+Time Complexity: O(n) – traverse the string once.
+
+Space Complexity: O(1) – constant extra space.
