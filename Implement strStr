@@ -1,0 +1,80 @@
+Implement strStr
+
+
+
+Problem
+
+Given two strings haystack and needle, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+
+
+
+Explanation 
+
+If needle is longer than haystack, it’s impossible to find → return -1.
+
+Loop over each possible starting index i in haystack.
+
+Extract substring haystack[i : i + len(needle)].
+
+Compare with needle:
+
+If equal → return index i.
+
+If no match found after loop → return -1.
+
+
+
+
+Steps Example (haystack = "sadbutsad", needle = "sad")
+
+1. i=0 → check "sad" → ✅ match → return 0
+
+
+2. (No need to continue, as first occurrence found)
+
+
+
+ Output: 0
+
+
+
+
+Steps Example 2 (haystack = "leetcode", needle = "leeto")
+
+i=0 → "leet" vs "leeto" → mismatch
+
+i=1 → "eetc" vs "leeto" → mismatch
+
+… continue until end
+
+No match → return -1
+
+
+ Output: -1
+
+
+
+
+Formula / Key Idea
+
+Compare substring slices of length = len(needle).
+
+First match index is returned.
+
+If none found, return -1.
+
+
+
+
+
+Time & Space Complexity
+
+Time Complexity: O((n - m + 1) * m)
+
+n = len(haystack), m = len(needle)
+
+At each of n-m+1 positions, compare up to m characters.
+
+
+Space Complexity: O(1) – only indices and substring checks are used.
