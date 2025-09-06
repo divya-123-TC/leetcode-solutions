@@ -1,0 +1,70 @@
+Longest Substring Without Repeating Characters 
+
+
+
+Problem
+
+Given a string s, find the length of the longest substring without repeating characters.
+
+
+
+
+
+
+Explanation 
+
+Use sliding window with two pointers (left and right).
+
+last_seen dictionary stores the most recent index of each character.
+
+Iterate over string with right pointer:
+
+If character already seen within current window, move left to last_seen[c] + 1.
+
+Update max_len as the maximum window length.
+
+Update last_seen[c] = right.
+
+
+
+
+
+
+Steps Example (s = "abcabcbb")
+
+Start: left=0, max_len=0, last_seen={}
+
+
+right	char	left	last_seen before	action	max_len	last_seen after
+
+0	a	0	{}	add a	1	{a:0}
+1	b	0	{a:0}	add b	2	{a:0,b:1}
+2	c	0	{a:0,b:1}	add c	3	{a:0,b:1,c:2}
+3	a	0	{a:0,b:1,c:2}	repeat → left=1	3	{a:3,b:1,c:2}
+4	b	1	{a:3,b:1,c:2}	repeat → left=2	3	{a:3,b:4,c:2}
+5	c	2	{a:3,b:4,c:2}	repeat → left=3	3	{a:3,b:4,c:5}
+6	b	3	{a:3,b:4,c:5}	repeat → left=5	3	{a:3,b:6,c:5}
+7	b	5	{a:3,b:6,c:5}	repeat → left=7	3	{a:3,b:7,c:5}
+
+ Output: 3 ("abc" is the longest substring)
+
+
+
+
+Formula / Key Idea
+
+Maintain a window [left … right] with unique characters.
+
+If duplicate found, shift left to last_seen[char] + 1.
+
+Keep track of maximum window length.
+
+
+
+
+
+Time & Space Complexity
+
+Time Complexity: O(n) – each character is visited at most twice (once by right, once by left).
+
+Space Complexity: O(min(n, k)) – dictionary stores up to k unique chars, where k = charset size (26 for lowercase, 128 ASCII, etc).
