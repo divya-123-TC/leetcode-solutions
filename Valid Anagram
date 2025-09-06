@@ -1,0 +1,93 @@
+Valid Anagram 
+
+
+Problem
+
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+An Anagram is a word or phrase formed by rearranging the letters of another, using all the original letters exactly once.
+
+
+
+Explanation 
+
+1. Check lengths:
+
+If s and t have different lengths → they cannot be anagrams.
+
+
+
+2. Build frequency dictionary:
+
+Loop through s, count occurrences of each character in counter.
+
+
+Example:
+
+s = "anagram"
+counter = {'a': 3, 'n': 1, 'g': 1, 'r': 1, 'm': 1}
+
+
+3. Validate against t:
+
+For each character in t:
+
+If char not in counter OR its count is already 0 → return False.
+
+Otherwise, decrement its count.
+
+
+
+
+4. Final check:
+
+If all counts balanced to 0, return True.
+
+
+
+
+
+
+
+Steps Example (s = "anagram", t = "nagaram")
+
+Step 1: Lengths match → continue.
+
+Step 2: Counter after scanning s:
+
+{'a':3, 'n':1, 'g':1, 'r':1, 'm':1}
+
+Step 3: Process t = "nagaram"
+
+n: decrement → {'a':3,'n':0,'g':1,'r':1,'m':1}
+
+a: decrement → {'a':2,'n':0,'g':1,'r':1,'m':1}
+
+g: decrement → {'a':2,'n':0,'g':0,'r':1,'m':1}
+
+… continue until all zero.
+
+
+
+ Output: True
+
+
+
+
+Formula / Key Idea
+
+Count characters in s.
+
+Subtract counts while scanning t.
+
+If all counts match (no negatives, no missing chars) → Anagram.
+
+
+
+
+
+Time & Space Complexity
+
+Time Complexity: O(n) – each string is scanned once.
+
+Space Complexity: O(1) – dictionary holds at most 26 lowercase letters (constant size).
