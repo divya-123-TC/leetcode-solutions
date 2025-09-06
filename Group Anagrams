@@ -1,0 +1,88 @@
+Group Anagrams 
+
+
+
+
+Problem
+
+Given an array of strings strs, group the anagrams together.
+
+An anagram is a word or phrase formed by rearranging the letters of another word, using all the original letters exactly once.
+
+Return the answer as a list of groups (list of lists).
+
+
+
+
+Explanation 
+
+Use a dictionary (defaultdict(list)) to group words by their sorted form.
+
+sorted(s) → returns characters in alphabetical order → anagram words will share the same sorted key.
+
+Append each word to the list corresponding to its key.
+
+Finally, return grouped values.
+
+
+
+
+
+Steps Example (strs = ["eat","tea","tan","ate","nat","bat"])
+
+1. "eat" → key = "aet" → group = { "aet": ["eat"] }
+
+
+2. "tea" → key = "aet" → group = { "aet": ["eat","tea"] }
+
+
+3. "tan" → key = "ant" → group = { "aet": ["eat","tea"], "ant": ["tan"] }
+
+
+4. "ate" → key = "aet" → group = { "aet": ["eat","tea","ate"], "ant": ["tan"] }
+
+
+5. "nat" → key = "ant" → group = { "aet": ["eat","tea","ate"], "ant": ["tan","nat"] }
+
+
+6. "bat" → key = "abt" → group = { "aet": [...], "ant": [...], "abt": ["bat"] }
+
+
+
+ Output:
+
+[
+  ["eat","tea","ate"],
+  ["tan","nat"],
+  ["bat"]
+]
+
+
+
+Formula / Key Idea
+
+Key idea: Sorted characters form a signature for anagrams.
+
+Example: "eat", "tea", "ate" → "aet".
+
+
+So,
+
+key = "".join(sorted(s))
+ans[key].append(s)
+
+
+
+
+Time & Space Complexity
+
+Time Complexity: O(N * K log K)
+
+N = number of strings,
+
+K = maximum string length,
+
+K log K for sorting each string.
+
+
+Space Complexity: O(N * K) → storing all strings in groups.
