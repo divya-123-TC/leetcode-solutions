@@ -1,0 +1,33 @@
+Generate Parentheses 
+## Problem
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+*Example:*
+
+Input: n = 3 Output: ["((()))","(()())","(())()","()(())","()()()"]
+
+
+## Approach
+
+We solve this problem using *DFS (backtracking)*:
+
+- We can only place n opening brackets '(' and n closing brackets ')'.
+- At each step, we decide:
+  1. If the number of opening brackets used (left) is less than n, we can add '('.
+  2. If the number of closing brackets used (right) is less than left, we can add ')'.
+- Once the string length reaches 2 * n, it is a valid combination and added to the result.
+
+This way, we only generate *valid parentheses strings* and avoid invalid paths.
+
+
+
+
+
+
+
+Complexity Analysis
+
+Time Complexity: O(4^n / √n)
+(This is the nth Catalan number – the count of valid parentheses combinations.)
+
+Space Complexity: O(n) for the recursion depth.
