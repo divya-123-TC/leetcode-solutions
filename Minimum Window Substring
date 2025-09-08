@@ -1,0 +1,43 @@
+Minimum Window Substring
+
+
+
+Problem Statement
+Given two strings s and t, return the *minimum window substring* of s such that every character in t (including duplicates) is included in the window.  
+If no such substring exists, return an empty string "".
+ Example
+*Input:*
+
+s = "ADOBECODEBANC" t = "ABC"
+
+*Output:*
+
+"BANC"
+
+Explanation:  
+- All characters A, B, C appear in "BANC".  
+- It is the smallest valid window.
+
+
+
+ Approach
+We use the *sliding window technique* with two pointers (left, right):
+
+1. Count frequencies of characters in t using a dictionary.  
+2. Expand the window by moving right and include characters.  
+3. When all characters are matched, shrink the window from the left to find the minimum length.  
+4. Keep track of the smallest valid window.  
+5. Return the smallest substring found.
+
+
+        
+        
+
+
+⏱ Complexity Analysis
+
+Time Complexity: O(|s| + |t|)
+Each character is processed at most twice (once by right, once by left).
+
+Space Complexity: O(|t|)
+Dictionary stores character frequencies of t.
