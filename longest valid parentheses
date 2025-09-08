@@ -1,0 +1,59 @@
+longest valid parentheses
+
+Problem Statement
+Given a string containing just the characters '(' and ')', find the length of the *longest valid (well-formed) parentheses substring*.
+
+Example
+*Input:*
+
+s = "(()"
+
+*Output:*
+
+2
+
+Explanation: The longest valid parentheses substring is "()".
+
+
+
+*Input:*
+
+s = ")()())"
+
+*Output:*
+
+4
+
+Explanation: The longest valid parentheses substring is "()()".
+
+## 📝 Approach
+We solve this using a *stack-based method*:
+
+1. **Initialize stack with -1:**  
+   This acts as a base index for valid substring calculations.
+
+2. **Traverse the string with index i:**
+   - If the character is '(', push its index onto the stack.  
+   - If the character is ')', pop from the stack.
+
+3. *Handle unmatched closing bracket:*
+   - If the stack becomes empty after popping, push the current index (i) as the new base.  
+
+4. *Calculate valid substring length:*
+   - If the stack is not empty, compute i - stack[-1] as the length of the current valid substring.  
+   - Update max_length whenever a longer valid substring is found.  
+
+5. *Return result:*
+   - The value of max_length will be the longest valid parentheses substring.
+
+
+        
+       
+
+⏱ Complexity Analysis
+
+Time Complexity: O(n)
+Each character is pushed/popped from the stack at most once.
+
+Space Complexity: O(n)
+The stack can store up to n indices in the worst case.
