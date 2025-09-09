@@ -1,0 +1,83 @@
+ Substring with Concatenation of All Words
+
+ Problem Statement
+Given a string s and an array of strings words (all of the same length),  
+return all *starting indices* of substring(s) in s that are a concatenation of **each word in words exactly once** and *without any extra characters* in between.
+
+
+
+## Example
+
+*Input:*
+
+s = "barfoothefoobarman" words = ["foo", "bar"]
+
+*Output:*
+
+[0, 9]
+
+*Explanation:*
+- At index 0 → substring "barfoo" is "bar" + "foo"
+- At index 9 → substring "foobar" is "foo" + "bar"
+
+Both match the concatenation of words in words.
+
+
+
+ Key Observations
+1. All words are of the *same length* (say L).  
+2. Any valid substring must have length = len(words) * L.  
+3. We only need to check substrings of that specific window length.  
+4. To verify, we can compare *word frequencies* (like anagrams, but word-based not character-based).
+
+
+
+ Approach
+
+1. *Build Word Frequency Map*  
+   Count how many times each word appears in words.  
+   Example: ["foo", "bar", "foo"] → { "foo": 2, "bar": 1 }
+
+2. **Sliding Window Over s**  
+   - Window size = len(words) * word_len  
+   - For each starting index i, extract chunks of size word_len.  
+   - Build frequency map for these chunks.
+
+3. *Compare Maps*  
+   - If frequency of current window == frequency of words → valid index.  
+   - Otherwise → move to the next index.
+
+4. *Store Results*  
+   Collect all indices in a list and return.
+
+---
+
+ Dry Run Example
+
+s = "barfoothefoobarman", words = ["foo","bar"]
+
+- Word length = 3  
+- Window length = 2 × 3 = 6  
+- Possible substrings:
+  - Index 0 → "barfoo" → words = ["bar","foo"] → ✅ match
+  - Index 1 → "arfoot" → not valid
+  - Index 2 → "rfooth" → not valid
+  - Index 3 → "foothe" → not valid
+  - Index 9 → "foobar" → words = ["foo","bar"] → ✅ match  
+- Final Answer: [0, 9]
+
+
+ Complexity Analysis
+
+Time Complexity:
+
+Outer loop runs O(N) where N = len(s)
+
+Inner loop processes M words (M = len(words))
+
+Overall = O(N × M)
+
+
+Space Complexity:
+
+Frequency maps → O(M)
