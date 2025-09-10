@@ -1,0 +1,74 @@
+Integer to Roman
+
+ Problem Statement
+Convert an integer into a Roman numeral.
+
+### Roman Symbols:
+| Symbol | Value |
+|--------|-------|
+| I      | 1     |
+| V      | 5     |
+| X      | 10    |
+| L      | 50    |
+| C      | 100   |
+| D      | 500   |
+| M      | 1000  |
+
+*Special Cases (Subtractive Rule):*
+- 4 → IV
+- 9 → IX
+- 40 → XL
+- 90 → XC
+- 400 → CD
+- 900 → CM
+
+
+## Approach
+- Maintain a list of value-symbol pairs, *sorted from largest to smallest*.  
+- For each pair:
+  - Find how many times the value fits into num using integer division (num // value).  
+  - Append the corresponding symbol that many times.  
+  - Reduce num accordingly.  
+- Continue until num becomes 0.  
+- Join all the symbols into the final Roman numeral string.
+
+
+
+
+
+
+Dry Run Example
+
+Input: num = 1994
+
+1000 → M → num = 994 → res = ["M"]
+
+900 → CM → num = 94 → res = ["M", "CM"]
+
+500 → skip
+
+400 → skip
+
+100 → skip
+
+90 → XC → num = 4 → res = ["M", "CM", "XC"]
+
+4 → IV → num = 0 → res = ["M", "CM", "XC", "IV"]
+
+
+ Output = "MCMXCIV"
+
+
+
+Complexity Analysis
+
+Time Complexity: O(1)
+
+Maximum 13 Roman symbols to check (fixed size).
+
+Does not depend on input size.
+
+
+Space Complexity: O(1)
+
+Output string length is at most 15 for the largest value (3999 = "MMMCMXCIX").
