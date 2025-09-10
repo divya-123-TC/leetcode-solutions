@@ -1,0 +1,65 @@
+ Roman to Integer
+
+## Problem Statement
+Given a Roman numeral string, convert it into an integer.
+
+Roman numerals are represented by seven different symbols:
+
+| Symbol | Value |
+|--------|-------|
+| I      | 1     |
+| V      | 5     |
+| X      | 10    |
+| L      | 50    |
+| C      | 100   |
+| D      | 500   |
+| M      | 1000  |
+
+Rules:
+- Symbols are usually placed from *largest to smallest*, left to right.
+- But if a smaller symbol comes *before* a larger one, it is *subtracted*.  
+  - Example: IV = 5 - 1 = 4, IX = 10 - 1 = 9.
+
+
+## Approach
+- Traverse the Roman numeral *from right to left*.
+- Keep track of the *previous value* seen.
+- If the current value is *less than the previous one*, subtract it.  
+- Otherwise, add it to the total.
+- This works because subtraction cases (IV, IX, etc.) always have a smaller value before a bigger one.
+
+
+                
+
+Dry Run Example
+
+Input: s = "MCMXCIV"
+
+Start from rightmost:
+
+V (5) → total = 5, prev = 5
+
+I (1) < 5 → subtract → total = 4, prev = 1
+
+C (100) > 1 → add → total = 104, prev = 100
+
+X (10) < 100 → subtract → total = 94, prev = 10
+
+M (1000) > 10 → add → total = 1094, prev = 1000
+
+C (100) < 1000 → subtract → total = 994, prev = 100
+
+M (1000) > 100 → add → total = 1994
+
+
+
+ Output = 1994
+
+
+
+
+Complexity Analysis
+
+Time Complexity: O(n), where n = length of string (single pass).
+
+Space Complexity: O(1), dictionary size is constant.
