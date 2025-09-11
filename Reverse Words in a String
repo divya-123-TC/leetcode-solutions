@@ -1,0 +1,60 @@
+Reverse Words in a String 
+
+
+ Problem Statement
+Given an input string s, reverse the order of the words.  
+
+- A word is defined as a sequence of non-space characters.  
+- The words in s will be separated by at least one space.  
+- The result string should not contain leading or trailing spaces, and words should be separated by a single space.  
+
+### Example 1
+*Input:*  
+s = "the sky is blue"  
+*Output:*  
+"blue is sky the"
+
+### Example 2
+*Input:*  
+s = "  hello   world  "  
+*Output:*  
+"world hello"
+
+### Example 3
+*Input:*  
+s = "a good   example"  
+*Output:*  
+"example good a"
+
+---
+
+ Approach
+1. Use Python’s split() method to break the string into words.  
+   - It automatically removes extra spaces (leading, trailing, and multiple spaces between words).  
+2. Reverse the list of words using reverse().  
+3. Join the reversed words back into a string using " ".join(...).  
+
+ Complexity
+- *Time Complexity:* O(n) where n = len(s)  
+  - Splitting, reversing, and joining each take linear time.  
+- *Space Complexity:* O(n)  
+  - Extra space is required for storing the words list.
+
+
+
+ Example Run
+
+Input:
+s = "  the sky   is blue  "
+
+Step-by-step:
+
+After split() → ["the", "sky", "is", "blue"]
+
+After reverse() → ["blue", "is", "sky", "the"]
+
+After " ".join() → "blue is sky the"
+
+
+Output:
+"blue is sky the"
