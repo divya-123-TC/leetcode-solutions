@@ -1,0 +1,48 @@
+ Zigzag Conversion 
+
+Problem Statement
+The string s is written in a zigzag pattern on a given number of rows (numRows) and then read row by row.
+
+For example, given s = "PAYPALISHIRING" and numRows = 3, the zigzag pattern looks like this:
+
+P   A   H   N A P L S I I G Y   I   R
+
+Reading row by row gives:  
+*Output:* "PAHNAPLSIIGYIR"
+
+
+ Approach
+We simulate the zigzag writing process:
+
+1. Maintain an array of lists rows where each row stores its characters.  
+2. Traverse the string s character by character.  
+3. Use a pointer idx to track the current row, and d (direction) to know whether we are moving *down* or *up*.  
+   - If we’re at the *top row, change direction to **down*.  
+   - If we’re at the *bottom row, change direction to **up*.  
+4. Append characters to the appropriate row.  
+5. Finally, join all rows together to form the result.
+
+
+
+ Complexity
+- *Time Complexity:* O(n) where n = len(s)  
+  Each character is visited once.  
+- *Space Complexity:* O(n)  
+  Extra storage is used for rows before joining.
+
+
+
+ Example Run
+
+Input:
+s = "PAYPALISHIRING", numRows = 4
+
+Zigzag Pattern:
+
+P     I    N
+A   L S  I G
+Y A   H R
+P     I
+
+Output:
+"PINALSIGYAHRPI
