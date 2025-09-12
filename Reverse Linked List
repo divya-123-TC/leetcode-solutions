@@ -1,0 +1,40 @@
+Reverse Linked List
+
+
+
+## Problem Statement
+Given the head of a singly linked list, reverse the list and return the new head.
+
+### Example
+*Input:*
+
+1 → 2 → 3 → 4 → 5 → None
+
+*Output:*
+
+5 → 4 → 3 → 2 → 1 → None
+
+
+
+## Approach
+
+We use an *iterative approach* with pointer manipulation:
+
+1. Initialize a pointer node = None (this will become the new head).
+2. Traverse the linked list using head.
+3. For each node:
+   - Store the next node in temp.
+   - Reverse the link by pointing head.next to node.
+   - Move node forward to the current head.
+   - Move head forward to temp.
+4. When traversal ends, node points to the new head of the reversed list.
+
+This approach reverses the list *in-place* with O(1) extra space.
+
+
+
+Complexity Analysis
+
+Time Complexity: O(n) — we visit each node exactly once.
+
+Space Complexity: O(1) — in-place reversal, no extra data structures.
