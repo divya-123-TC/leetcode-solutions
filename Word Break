@@ -1,0 +1,51 @@
+Word Break 
+
+
+
+## Problem Statement
+
+Given a string s and a list of words wordDict, determine if s can be segmented into a sequence of one or more words from the dictionary.
+
+### Example
+
+*Input:*
+
+s = "leetcode" wordDict = ["leet", "code"]
+
+*Output:*
+
+True
+
+Explanation: "leetcode" can be segmented as "leet code".
+
+
+
+## Approach
+
+We use *Dynamic Programming (DP)* with a bottom-up approach.
+
+- Define dp[i] → True if the substring s[0:i] can be segmented using words from wordDict.
+- Initialize:
+  - dp[0] = True (empty string is always valid).
+- Transition:
+  - For each position i in the string:
+    - Check all words w in wordDict.
+    - If the substring s[i-len(w):i] matches w and dp[i-len(w)] is True, then set dp[i] = True.
+- The answer is dp[len(s)].
+
+
+
+
+
+Complexity Analysis
+
+Time Complexity: O(n × m × k)
+
+n = length of string s
+
+m = number of words in wordDict
+
+k = average length of words
+
+
+Space Complexity: O(n) for the dp array.
