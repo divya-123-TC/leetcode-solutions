@@ -1,0 +1,71 @@
+Add Two Numbers (Linked List)
+
+## Problem
+You are given two *non-empty linked lists* representing two non-negative integers.  
+The digits are stored in *reverse order*, and each node contains a single digit.  
+Add the two numbers and return the sum as a *linked list*.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+
+## Example
+
+*Input:*
+
+l1 = [2, 4, 3] l2 = [5, 6, 4]
+
+*Output:*
+
+[7, 0, 8]
+
+*Explanation:*
+
+342 + 465 = 807
+
+
+
+## Approach
+
+1. Use a *dummy node* to simplify list construction.
+2. Use a *carry* variable to handle sums greater than 9.
+3. Traverse both linked lists until both are exhausted and carry is 0:
+   - Add l1.val if available.
+   - Add l2.val if available.
+   - Add carry.
+4. Split the sum into:
+   - digit = total % 10
+   - carry = total // 10
+5. Append the new digit as a node in the result list.
+6. Return dummy.next as the head of the final result.
+
+
+  Example
+
+Input:
+
+l1 = 2 → 4 → 3  (represents 342)
+l2 = 5 → 6 → 4  (represents 465)
+
+Steps:
+
+1. 2 + 5 = 7 → Node = 7
+
+
+2. 4 + 6 = 10 → Node = 0, Carry = 1
+
+
+3. 3 + 4 + 1(carry) = 8 → Node = 8
+
+
+
+Output:
+
+7 → 0 → 8  (represents 807)
+
+
+
+Complexity
+
+Time Complexity: O(max(m, n)) → We visit each node once.
+
+Space Complexity: O(max(m, n)) → For the result linked list.
