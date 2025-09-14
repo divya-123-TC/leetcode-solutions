@@ -1,0 +1,32 @@
+Linked List Cycle Detection
+
+## Problem
+Given the head of a linked list, determine if the linked list has a cycle in it.
+
+A cycle occurs when a node's next pointer points back to a previous node in the list.
+
+## Approach
+We use *Floyd's Cycle Detection Algorithm (Tortoise and Hare Algorithm):*
+- Maintain two pointers:
+  - *Slow pointer* moves one step at a time.
+  - *Fast pointer* moves two steps at a time.
+- If there is *no cycle*, the fast pointer will eventually reach None.
+- If there *is a cycle*, the fast and slow pointers will eventually meet.
+
+
+Complexity Analysis
+
+Time Complexity: O(n)
+Both pointers traverse the list at most once.
+
+Space Complexity: O(1)
+No extra data structures are used.
+
+
+Example
+
+Input: head = [3,2,0,-4], pos = 1
+(The tail connects to the node at index 1)
+
+Output: True
+
