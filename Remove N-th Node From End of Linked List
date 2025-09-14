@@ -1,0 +1,37 @@
+Remove N-th Node From End of Linked List
+
+## Problem
+Given the head of a linked list, remove the n-th node from the end of the list and return its head.
+
+## Approach
+We use the *two-pointer technique* along with a *dummy node*:
+
+1. Create a dummy node (res) that points to the head.  
+   This helps handle cases where the first node needs to be removed.  
+
+2. Move the head pointer forward by n steps.  
+
+3. Move both head and dummy pointers together until head reaches None.  
+   At this point, dummy will be just before the node that needs to be removed.  
+
+4. Remove the target node by adjusting pointers:  
+   dummy.next = dummy.next.next  
+
+5. Return res.next as the new head of the list.  
+
+
+
+Complexity Analysis
+
+Time Complexity: O(n)
+We make a single pass through the list.
+
+Space Complexity: O(1)
+Only a few extra pointers are used.
+
+
+Example
+
+Input: head = [1,2,3,4,5], n = 2
+Output: [1,2,3,5]
+
