@@ -1,0 +1,89 @@
+Swap Nodes in Pairs
+
+Problem Statement
+
+Given a linked list, swap every two adjacent nodes and return its head.
+You must solve the problem without modifying the values in the list’s nodes (i.e., only node pointers may be changed).
+
+Example:
+
+Input:  1 → 2 → 3 → 4
+Output: 2 → 1 → 4 → 3
+
+
+
+
+ Approach
+
+We solve this problem using an iterative pointer manipulation method:
+
+1. Dummy Node Setup
+
+Create a dummy node pointing to head.
+
+Helps handle edge cases (like when head changes after swapping).
+
+
+
+2. Loop through list in pairs
+
+Use cur as the first node of the pair.
+
+Use second = cur.next as the second node.
+
+Save npn = cur.next.next (next pair start).
+
+
+
+3. Swap the pair
+
+Point second.next → cur
+
+Point cur.next → npn
+
+Point prev.next → second
+
+
+
+4. Move pointers
+
+Move prev to cur (end of swapped pair).
+
+Move cur to npn (next pair start).
+
+
+
+5. Return result
+
+Return dummy.next as the new head.
+
+
+
+
+ Complexity Analysis
+
+Time Complexity: O(n) → each node is visited once.
+
+Space Complexity: O(1) → in-place swapping using pointers.
+
+
+
+
+
+ Dry Run Example
+
+Input:
+
+1 → 2 → 3 → 4
+
+Step 1 (swap 1 & 2):
+
+0 → 2 → 1 → 3 → 4
+
+Step 2 (swap 3 & 4):
+
+0 → 2 → 1 → 4 → 3
+
+Final Output:
+
+2 → 1 → 4 → 3
