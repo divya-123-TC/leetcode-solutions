@@ -1,0 +1,73 @@
+Reorder List
+
+Problem Statement
+
+You are given the head of a singly linked list. Reorder the list in the following pattern:
+
+L0 → L1 → … → Ln-1 → Ln
+
+Reordered into:
+
+L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → …
+
+You must do this in-place without modifying the node values.
+
+
+
+ Approach
+
+We solve this problem in 3 main steps:
+
+1. Find the Middle
+
+Use slow and fast pointers.
+
+When fast reaches the end, slow will be at the middle.
+
+
+2. Reverse the Second Half
+
+Cut the list into two halves.
+
+Reverse the second half using iterative reversal.
+
+
+3. Merge Both Halves
+
+Merge nodes one by one: first from the left half, then from the right half (reversed).
+
+
+
+ Complexity Analysis
+
+Time Complexity: O(n) → each node visited a constant number of times.
+
+Space Complexity: O(1) → in-place operations only.
+
+
+
+
+
+Example
+
+Input:
+
+1 → 2 → 3 → 4 → 5
+
+Step 1: Find Middle
+
+Middle = 3
+First Half = 1 → 2 → 3
+Second Half = 4 → 5
+
+Step 2: Reverse Second Half
+
+Reversed Second Half = 5 → 4
+
+Step 3: Merge
+
+1 → 5 → 2 → 4 → 3
+
+Final Output:
+
+1 → 5 →
