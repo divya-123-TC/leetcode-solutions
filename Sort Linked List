@@ -1,0 +1,99 @@
+Sort Linked List
+
+Problem Statement
+
+Given the head of a singly linked list, return the list sorted in ascending order.
+
+Example:
+
+Input: head = [4,2,1,3]  
+Output: [1,2,3,4]
+
+
+
+
+Approach – Merge Sort on Linked List
+
+The problem requires sorting in O(n log n) time with O(1) extra space.
+We use Merge Sort because:
+
+Arrays can be sorted with quicksort/mergesort, but linked lists are naturally suited for mergesort.
+
+Splitting a linked list can be done using the slow and fast pointer technique.
+
+Merging two sorted lists is efficient with linked lists.
+
+
+Steps:
+
+1. Base Case
+
+If list is empty or has only one node, it’s already sorted.
+
+
+
+2. Find the Middle
+
+Use slow and fast pointers to find the midpoint.
+
+Split the list into two halves.
+
+
+
+3. Recursive Sort
+
+Recursively sort left half and right half.
+
+
+
+4. Merge Two Sorted Lists
+
+Use a helper function to merge two sorted linked lists into one.
+
+
+
+5. Return the Sorted List
+
+
+
+
+
+
+Complexity Analysis
+
+Time Complexity: O(n log n)
+
+Each split takes O(log n) levels.
+
+Each merge processes n nodes.
+
+
+Space Complexity:
+
+O(1) extra space (in-place merge).
+
+O(log n) recursion stack space.
+
+
+
+
+
+Dry Run Example
+
+Input: head = [4,2,1,3]
+
+1. Split into [4,2] and [1,3].
+
+
+2. Sort left → [2,4].
+
+
+3. Sort right → [1,3].
+
+
+4. Merge → [1,2,3,4].
+
+
+
+Output:
+[1,2,3,4]
