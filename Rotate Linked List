@@ -1,0 +1,95 @@
+Rotate Linked List
+
+Problem Statement
+
+Given the head of a singly linked list and an integer k, rotate the list to the right by k places.
+
+Example:
+
+Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+
+
+
+
+Approach
+
+1. Handle Edge Case
+
+If the list is empty (head == None), return immediately.
+
+
+
+2. Find the Length of the List
+
+Traverse the list to count total nodes (length).
+
+Keep track of the tail node (dummy).
+
+
+
+3. Normalize k
+
+Use k % length to avoid unnecessary rotations.
+
+If k % length == 0, return the original list.
+
+
+
+4. Find the New Head
+
+Move a pointer to (length - (k % length) - 1) steps from the start.
+
+The next node will be the new head after rotation.
+
+
+
+5. Break and Reconnect
+
+Break the list at the pivot.
+
+Connect the old tail to the old head.
+
+
+
+6. Return New Head
+
+Return the new head node after rotation.
+
+
+
+
+
+
+
+Complexity Analysis
+
+Time Complexity: O(n)
+
+One traversal to find length.
+
+One traversal to find pivot.
+
+
+Space Complexity: O(1)
+
+No extra data structures used.
+
+
+
+
+
+Dry Run Example
+
+Input: head = [1,2,3,4,5], k = 2
+
+1. Length = 5, k % 5 = 2.
+
+
+2. New head position = 5 - 2 = 3rd node (3).
+
+
+3. Break at node 3 and reconnect tail to head.
+
+
+4. Final list: [4,5,1,2,3].
