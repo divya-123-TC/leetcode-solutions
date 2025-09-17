@@ -1,0 +1,61 @@
+Intersection of Two Linked Lists
+
+## Problem Statement
+You are given the heads of two singly linked-lists headA and headB.  
+Return the node at which the two linked lists intersect.  
+If the two linked lists have no intersection, return None.
+
+
+
+## Approach
+We use *two pointers* (a and b) to traverse both lists.  
+
+1. Start a from headA and b from headB.  
+2. Move both pointers one step at a time.  
+3. When a pointer reaches the end of a list, redirect it to the *head of the other list*.  
+4. If the lists intersect, the pointers will eventually meet at the intersection node.  
+5. If they don’t intersect, both will become None at the same time.
+
+This works because by switching heads, both pointers traverse the same *total length* (lenA + lenB).
+
+
+
+Dry Run Example
+
+Example 1:
+
+List A: 1 → 2 → 3
+                     ↘
+                      7 → 8 → 9
+                     ↗
+List B:       4 → 5
+
+a traverses A, then jumps to B.
+
+b traverses B, then jumps to A.
+
+Both meet at node 7.
+
+
+Example 2:
+
+List A: 1 → 2 → 3 → 4
+List B: 5 → 6
+(No intersection)
+
+Both pointers traverse lists fully.
+
+They reach None at the same time → return None.
+
+
+
+Complexity Analysis
+
+Time Complexity: O(m + n)
+
+Each pointer traverses both lists at most once.
+
+
+Space Complexity: O(1)
+
+Only two pointers are used.
