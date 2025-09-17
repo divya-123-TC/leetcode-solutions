@@ -1,0 +1,67 @@
+Copy List with Random Pointer
+
+## Problem Statement
+You are given a linked list where each node contains:
+- val → the node’s value  
+- next → pointer to the next node  
+- random → pointer to any node in the list (or None)  
+
+Your task: *Return a deep copy of the list.*
+
+
+## Approach
+We use a *hash map* to map each original node to its copy.  
+
+### Steps:
+1. *First Pass* → Create new nodes (only val) for each original node and store them in a hash map.  
+   - Key: original node  
+   - Value: copied node  
+
+2. *Second Pass* → Set the next and random pointers for each copied node using the hash map.  
+
+3. Return the copy of the head node.  
+
+This ensures both next and random pointers are correctly cloned.
+
+
+     
+
+
+Dry Run Example
+
+Example:
+
+Original List:
+1 → 2 → 3
+|    |     
+v    v
+3    1
+
+Node 1 points random → Node 3
+
+Node 2 points random → Node 1
+
+Node 3 has no random
+
+
+After Copy:
+
+1' → 2' → 3'
+|     |     
+v     v
+3'    1'
+
+The new list is a completely separate deep copy.
+
+
+
+Complexity Analysis
+
+Time Complexity: O(n)
+
+We visit each node twice (two passes).
+
+
+Space Complexity: O(n)
+
+Extra space for hash map storing node → copy mapping.
