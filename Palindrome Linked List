@@ -1,0 +1,41 @@
+# Palindrome Linked List 
+
+Problem Statement
+Given the head of a singly linked list, return True if it is a palindrome or False otherwise.
+
+A *palindrome* is a sequence that reads the same forward and backward.
+
+ Example
+*Input:*
+
+head = [1,2,2,1]
+
+*Output:*
+
+True
+
+*Input:*
+
+head = [1,2]
+
+*Output:*
+
+False
+
+Approach
+1. *Find the middle* of the linked list using *slow and fast pointers*.  
+   - slow moves one step at a time.  
+   - fast moves two steps at a time.  
+   - When fast reaches the end, slow will be at the middle.  
+
+2. *Reverse the second half* of the linked list starting from slow.  
+
+3. *Compare the first half and the reversed second half* node by node.  
+   - If all corresponding values match → it's a palindrome.  
+   - If any mismatch → not a palindrome.  
+
+ Complexity Analysis
+
+Time Complexity: O(n) → We traverse the list multiple times (finding middle, reversing, comparing).
+
+Space Complexity: O(1) → In-place reversal, no extra memory used.
