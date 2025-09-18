@@ -1,0 +1,43 @@
+# Reverse Nodes in k-Group 
+
+
+Problem Statement
+Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list.  
+- k is a positive integer, and is less than or equal to the length of the linked list.  
+- If the number of nodes is not a multiple of k then the left-out nodes remain as it is.  
+- You must solve the problem without using extra memory for node storage (only O(1) extra memory allowed).
+
+Example
+*Input:*
+
+head = [1,2,3,4,5], k = 2
+
+*Output:*
+
+[2,1,4,3,5]
+
+*Input:*
+
+head = [1,2,3,4,5], k = 3
+
+*Output:*
+
+[3,2,1,4,5]
+
+Approach
+1. Use a *dummy node* before the head to simplify edge cases.  
+2. For each group of size k:  
+   - Find the `k`th node. If fewer than k nodes remain, stop.  
+   - Reverse the nodes between group_prev.next and kth.  
+   - Reconnect the reversed group with the rest of the list.  
+3. Continue until the end of the list.  
+
+This uses *O(1) extra space* and visits each node a constant number of times, so the time complexity is *O(n)*.
+
+
+
+Complexity Analysis
+
+Time Complexity: O(n) → Each node is visited and reversed once.
+
+Space Complexity: O(1) → No extra data structures, only pointers used
