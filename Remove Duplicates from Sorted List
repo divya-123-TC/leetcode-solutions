@@ -1,0 +1,86 @@
+Remove Duplicates from Sorted List 
+
+Problem Statement
+
+Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list without duplicates.
+
+Example 1
+
+Input:
+
+1 -> 1 -> 2
+
+Output:
+
+1 -> 2
+
+Example 2
+
+Input:
+
+1 -> 1 -> 2 -> 3 -> 3
+
+Output:
+
+1 -> 2 -> 3
+
+
+
+
+Approach
+
+Since the list is already sorted, all duplicates will be next to each other.
+We can remove them in one pass using simple pointer manipulation:
+
+1. Start with a pointer head at the beginning.
+
+
+2. Traverse the list while head and head.next are not None.
+
+
+3. Compare head.val and head.next.val:
+
+If they are equal → skip the duplicate node by doing head.next = head.next.next.
+
+Otherwise → move head forward.
+
+
+
+4. Return the starting node (res), which points to the updated linked list.
+
+
+
+
+
+
+Complexity Analysis
+
+Time Complexity: O(n) → We traverse the list once.
+
+Space Complexity: O(1) → No extra data structures, in-place updates.
+
+
+
+
+
+Dry Run
+
+Input: 1 -> 1 -> 2 -> 3 -> 3
+
+Start: head = 1
+
+Compare 1 and 1 → equal → remove duplicate → list becomes 1 -> 2 -> 3 -> 3
+
+Move to next: head = 2
+
+Compare 2 and 3 → not equal → move forward
+
+Compare 3 and 3 → equal → remove duplicate → list becomes 1 -> 2 -> 3
+
+End of list → return result
+
+
+Output: 1 -> 2 -> 3
+
+
+---
