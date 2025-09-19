@@ -1,0 +1,99 @@
+Odd Even Linked List 
+
+Problem Statement
+
+Given a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.
+The first node is considered odd, the second node is even, and so on.
+
+Example
+
+Input:
+
+1 -> 2 -> 3 -> 4 -> 5 -> NULL
+
+Output:
+
+1 -> 3 -> 5 -> 2 -> 4 -> NULL
+
+
+
+
+Approach
+
+We can solve this in O(n) time and O(1) space by rearranging pointers directly without creating new nodes.
+
+1. Base case
+
+If the list is empty or has only one node, return head.
+
+
+
+2. Initialization
+
+odd = head → pointer for odd-indexed nodes.
+
+even = head.next → pointer for even-indexed nodes.
+
+even_head = even → store the starting point of even list (so we can connect later).
+
+
+
+3. Rearranging
+
+Traverse while even and even.next exist.
+
+Link odd nodes together and move odd forward.
+
+Link even nodes together and move even forward.
+
+
+
+4. Final connection
+
+After traversal, connect the last odd node to the head of even list (even_head).
+
+
+
+
+
+
+Complexity Analysis
+
+Time Complexity: O(n) → Each node is visited once.
+
+Space Complexity: O(1) → Reordering is done in-place.
+
+
+
+
+
+Dry Run
+
+For input: 1 -> 2 -> 3 -> 4 -> 5
+
+Start:
+
+odd = 1, even = 2, even_head = 2
+
+
+Iteration 1:
+
+Connect odd: 1 -> 3
+
+Connect even: 2 -> 4
+
+Now: 1 -> 3 -> 4 -> 5, and even list starts at 2 -> 4
+
+
+Iteration 2:
+
+Connect odd: 3 -> 5
+
+Connect even: 4 -> None
+
+Now: 1 -> 3 -> 5, and even list is 2 -> 4
+
+
+Final:
+
+1 -> 3 -> 5 -> 2 -> 4
