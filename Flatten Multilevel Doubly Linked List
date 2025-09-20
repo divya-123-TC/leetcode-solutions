@@ -1,0 +1,90 @@
+Flatten Multilevel Doubly Linked List
+
+Problem Statement
+
+Given a multilevel doubly linked list, where nodes may have a child pointer pointing to another doubly linked list, flatten the list so that all nodes appear in a single-level doubly linked list. The child pointers should be set to None after flattening.
+
+
+
+Approach / Algorithm
+
+We use a stack-based iterative approach:
+
+1. Initialize:
+
+If head is None, return None.
+
+Create an empty stack.
+
+Start with current = head.
+
+
+
+2. Traverse the list:
+
+While current is not None or the stack is not empty:
+
+1. If current node has a child:
+
+If current.next exists, push it to the stack (to process later).
+
+Set current.next to current.child.
+
+Update current.child.prev = current.
+
+Set current.child = None.
+
+
+
+2. If current node has no next but stack is not empty:
+
+Pop a node from the stack.
+
+Connect it as current.next.
+
+Update next_node.prev = current.
+
+
+
+3. Move current = current.next.
+
+
+
+
+
+3. Return:
+
+After traversal, head points to the flattened list.
+
+
+
+
+
+
+Example
+
+Input:
+
+1 - 2 - 3
+      |
+      7 - 8
+          |
+          11 - 12
+
+Flattened Output:
+
+1 - 2 - 3 - 7 - 8 - 11 - 12
+
+
+
+
+Complexity Analysis
+
+Time Complexity: O(N)
+
+Each node is visited exactly once, so the total time is proportional to the number of nodes.
+
+
+Space Complexity: O(D)
+
+The stack stores nodes when diving into child lists. D is the maximum depth of child lists.
