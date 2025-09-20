@@ -1,0 +1,65 @@
+Add Two Numbers II 
+
+Problem Statement
+
+You are given two non-empty linked lists representing two non-negative integers.
+The most significant digit comes first, and each node contains a single digit.
+Add the two numbers and return the sum as a linked list.
+
+You may not modify the input lists.
+
+
+
+
+Example
+
+Input:
+
+l1 = [7,2,4,3]
+l2 = [5,6,4]
+
+Output:
+
+[7,8,0,7]
+
+Explanation:
+7243 + 564 = 7807
+
+
+
+Approach 
+
+We cannot directly add digits from left to right because addition happens from least significant digit (rightmost side).
+So, we use two stacks to reverse the order of digits:
+
+1. Traverse both linked lists and push digits into two stacks (stack1, stack2).
+
+
+2. Pop values from stacks (last-in, first-out), add them along with carry.
+
+
+3. Create new nodes from the sum (taking total % 10).
+
+
+4. Link nodes in reverse order using a dummy_head.
+
+
+5. Continue until both stacks and carry are empty.
+
+
+
+This way, we simulate addition as if we were adding numbers by hand.
+
+
+
+
+Complexity Analysis 
+
+Time Complexity: O(n + m)
+
+Each digit of both lists is processed once.
+
+
+Space Complexity: O(n + m)
+
+Extra space for the two stacks.
