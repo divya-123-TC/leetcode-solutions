@@ -1,0 +1,74 @@
+Daily Temperatures 
+
+## Problem Statement
+Given a list of daily temperatures, return a list such that, for each day, tells you how many days you would have to wait until a warmer temperature.  
+If there is no future day for which this is possible, put 0 instead.
+
+- *Input:* temperatures = [73,74,75,71,69,72,76,73]  
+- *Output:* [1,1,4,2,1,1,0,0]
+
+---
+
+## Approach 🚀
+We use a *Monotonic Stack* to solve this in *O(n)* time.
+
+1. Create a stack (st) to keep indices of temperatures.  
+2. Iterate through each day i:  
+   - While the stack is not empty and today’s temperature is higher than the temperature of the index at the top of the stack:  
+     - Pop the index idx from the stack.  
+     - Update the result for that day: res[idx] = i - idx.  
+   - Push the current index i onto the stack.  
+3. By default, res is initialized with zeros. Any index left in the stack means no warmer day exists ahead, so they remain 0.
+
+---
+
+## Complexity 📊
+- *Time Complexity:* O(n) (each index is pushed and popped at most once).  
+- *Space Complexity:* O(n) for the stack and result array.  
+
+---
+
+## Code 💻
+```python
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        st = []
+        res = [0] * len(temperatures)
+
+        for i in range(len(temperatures)):
+            while st and temperatures[i] > temperatures[st[-1]]:
+                idx = st.pop()
+                res[idx] = i - idx
+            st.append(i)
+        
+        return res
+
+
+---
+
+Example Dry Run 🔎
+
+Input:
+temperatures = [73,74,75,71,69,72,76,73]
+
+Step by step:
+
+Day 0 (73) → wait 1 day (74)
+
+Day 1 (74) → wait 1 day (75)
+
+Day 2 (75) → wait 4 days (76)
+
+Day 3 (71) → wait 2 days (72)
+
+Day 4 (69) → wait 1 day (72)
+
+Day 5 (72) → wait 1 day (76)
+
+Day 6 (76) → no warmer day → 0
+
+Day 7 (73) → no warmer day → 0
+
+
+Output:
+[1, 1, 4, 2, 1, 1, 0, 0]
