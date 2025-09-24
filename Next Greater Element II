@@ -1,0 +1,78 @@
+Next Greater Element II 
+
+Problem Statement
+
+Given a circular array nums, find the next greater element for each element.
+If no greater element exists, return -1.
+
+Example 1
+Input: nums = [1,2,1]
+Output: [2,-1,2]
+Explanation:
+
+Next greater for 1 → 2
+
+Next greater for 2 → -1
+
+Next greater for 1 → 2
+
+
+
+
+
+Approach 🚀
+
+We use a stack to efficiently track elements:
+
+1. Initialize ng = [-1]*n to store next greater elements.
+
+
+2. Initialize an empty stack st to store indices.
+
+
+3. Traverse the array twice (for circular behavior):
+
+num = nums[i % n]
+
+While st is not empty and nums[st[-1]] < num:
+
+ng[st.pop()] = num → assign next greater
+
+
+Push index only in the first pass: if i < n: st.append(i)
+
+
+
+4. Return ng.
+
+
+
+
+
+
+Complexity 📊
+
+Time Complexity: O(n) — each element is pushed and popped at most once
+
+Space Complexity: O(n) — for the stack
+
+
+
+
+
+Example Dry Run 🔎
+
+Input: nums = [1,2,1]
+
+Steps:
+
+i=0 → push 0 → stack=[0]
+
+i=1 → 2 > 1 → pop 0 → ng[0]=2 → push 1 → stack=[1]
+
+i=2 → 1 < 2 → push 2 → stack=[1,2]
+
+i=3 → wrap → 1 < 2 → pop 2 → ng[2]=2
+
+
+Output: [2, -1, 2]
