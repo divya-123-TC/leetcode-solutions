@@ -1,0 +1,82 @@
+Next Greater Element I 
+
+Problem Statement
+
+Given two arrays nums1 and nums2 (with nums1 ⊆ nums2), for each element in nums1, find the next greater element in nums2.
+If no greater element exists, return -1.
+
+Example 1
+Input: nums1 = [4,1,2], nums2 = [1,3,4,2]
+Output: [-1,3,-1]
+Explanation:
+
+Next greater for 4 → -1
+
+Next greater for 1 → 3
+
+Next greater for 2 → -1
+
+
+Approach 🚀
+
+We use a stack + hashmap:
+
+1. Initialize an empty dictionary ng = {} to store next greater elements.
+
+
+2. Initialize an empty stack st = [].
+
+
+3. Traverse each num in nums2:
+
+While stack is not empty and st[-1] < num:
+
+ng[st.pop()] = num → assign next greater
+
+
+Push num onto the stack.
+
+
+
+4. Build the result for nums1: [ng.get(num, -1) for num in nums1].
+
+
+
+
+
+
+Complexity 📊
+
+Time Complexity: O(n + m) — traverse nums2 once, then map nums1
+
+Space Complexity: O(n) — for stack and dictionary (n = len(nums2))
+
+
+
+
+
+Example Dry Run 🔎
+
+Input: nums1 = [4,1,2], nums2 = [1,3,4,2]
+
+Steps:
+
+num=1 → push → stack=[1]
+
+num=3 → 3>1 → pop 1 → ng[1]=3 → push 3 → stack=[3]
+
+num=4 → 4>3 → pop 3 → ng[3]=4 → push 4 → stack=[4]
+
+num=2 → push → stack=[4,2]
+
+
+Result for nums1:
+
+4 → ng.get(4)=-1
+
+1 → ng.get(1)=3
+
+2 → ng.get(2)=-1
+
+
+Output: [-1,3,-1]
