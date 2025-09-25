@@ -1,0 +1,108 @@
+Simplify Path
+
+Problem Statement
+
+Given an absolute path for a file (Unix-style), simplify it.
+
+Input: string path
+
+Output: canonical path string
+
+
+Rules:
+
+1. Single dot "." → current directory → ignore
+
+
+2. Double dots ".." → parent directory → go one level up
+
+
+3. Multiple slashes // → treat as single /
+
+
+4. The canonical path must always start with / and have no trailing /, except root /.
+
+
+
+Example 1:
+
+Input: "/home/"
+Output: "/home"
+
+Example 2:
+
+Input: "/a/./b/../../c/"
+Output: "/c"
+
+Example 3:
+
+Input: "/../"
+Output: "/"
+
+
+
+
+Approach
+
+We use a stack to process directories:
+
+1. Split the path by "/" → get components.
+
+
+2. Initialize an empty stack.
+
+
+3. For each component:
+
+Skip "" or "." → no action.
+
+If ".." → pop from stack (if stack is not empty).
+
+Else → push the component into stack.
+
+
+
+4. Join the stack with "/" and prepend "/" → final simplified path.
+
+
+
+Key Idea: Stack naturally handles "going back" with "..".
+
+
+
+Dry Run Example
+
+Input: "/a/./b/../../c/"
+
+Step	Component	Stack	Action
+
+1	""	[]	skip
+2	"a"	["a"]	push
+3	"."	["a"]	skip
+4	"b"	["a","b"]	push
+5	".."	["a"]	pop
+6	".."	[]	pop
+7	"c"	["c"]	push
+
+
+Output: "/c" 
+
+
+
+
+Time & Space Complexity
+
+Time Complexity:
+
+Splitting path → O(n)
+
+Iterating components → O(n)
+
+Joining stack → O(n)
+
+Overall: O(n), where n = length of input path
+
+
+Space Complexity:
+
+Stack stores at most all directory names → O(n)
