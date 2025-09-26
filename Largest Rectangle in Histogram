@@ -1,0 +1,72 @@
+Largest Rectangle in Histogram
+
+Problem Statement
+
+Given an array heights representing the heights of bars in a histogram, find the largest rectangular area that can be formed.
+
+Example:
+
+Input: heights = [2,1,5,6,2,3]
+Output: 10
+Explanation: Rectangle of height 5 and width 2 (bars at index 2 and 3) → area = 10
+
+
+
+
+Approach
+
+Use a stack to keep track of bar indices in increasing height order.
+
+For each bar:
+
+1. Pop from stack while current height ≤ height of stack top.
+
+
+2. Calculate area with popped height as smallest bar in rectangle.
+
+
+3. Width = current_index - stack[-1] - 1.
+
+
+
+After processing all bars, pop remaining indices and calculate area.
+
+Keep track of maximum area.
+
+
+Key Idea:
+
+Stack helps find the first smaller bar to the left and right efficiently.
+
+
+
+Step by Step Dry Run
+
+Input: heights = [2,1,5,6,2,3]
+
+i	Stack (indices)	Action	Max Area
+
+0	[-1,0]	push 0	0
+1	[-1]	pop 0 → height=2, width=1 → area=2	2
+	[-1,1]	push 1	2
+2	[-1,1,2]	push 2	2
+3	[-1,1,2,3]	push 3	2
+4	[-1,1]	pop 3 → h=6, w=1 → area=6	6
+	[-1,1]	pop 2 → h=5, w=2 → area=10	10
+	[-1,1,4]	push 4	10
+5	[-1,1,4,5]	push 5	10
+End	[-1]	pop 5 → h=3, w=1 → area=3	10
+	[-1]	pop 4 → h=2, w=4 → area=8	10
+	[-1]	pop - none → end	10
+
+
+Output: 10
+
+
+
+
+Complexity
+
+Time: O(n) → each index pushed/popped at most once.
+
+Space: O(n) → stack stores indices.
