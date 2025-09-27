@@ -1,0 +1,58 @@
+
+Implement Stack using Queues
+
+Stack using One Queue (MyStack)
+
+Problem Statement
+
+Implement a stack (LIFO) using only one queue. The stack should support:
+
+push(x) → add element on top
+
+pop() → remove the top element
+
+top() → get the top element without removing
+
+empty() → check if stack is empty
+
+
+
+
+
+Approach
+
+Use a single queue (deque).
+
+When pushing, append the element and then rotate the queue so that the new element moves to the front.
+
+This ensures the most recent element always acts as the top.
+
+
+
+
+
+Dry Run
+
+st = MyStack()
+st.push(1)   # q=[1]
+st.push(2)   # q=[2,1] after rotation
+st.push(3)   # q=[3,2,1] after rotations
+st.top()     # returns 3
+st.pop()     # removes 3 → q=[2,1]
+st.empty()   # False
+
+
+
+
+Complexity
+
+push() → O(n) (rotation)
+
+pop() → O(1)
+
+top() → O(1)
+
+empty() → O(1)
+
+
+
