@@ -1,0 +1,47 @@
+
+Implement queue using stacks
+
+Queue using Two Stacks (MyQueue)
+
+ Problem Statement
+Implement a *queue* (FIFO) using only two stacks. The queue should support:
+- push(x) → add element to the back of queue  
+- pop() → remove the front element  
+- peek() → get the front element without removing  
+- empty() → check if queue is empty  
+
+
+ Approach
+- Maintain *two stacks*:  
+  - input → used for enqueue (push).  
+  - output → used for dequeue (pop/peek).  
+- Transfer elements from input to output only when output is empty. This reversal ensures FIFO order.
+
+
+       
+
+
+
+Dry Run
+
+q = MyQueue()
+q.push(1)   # input=[1], output=[]
+q.push(2)   # input=[1,2], output=[]
+q.peek()    # transfer → input=[], output=[2,1], returns 1
+q.pop()     # removes 1 → output=[2]
+q.empty()   # False
+
+
+
+
+Complexity
+
+push() → O(1)
+
+pop() → Amortized O(1), worst O(n) during transfer
+
+peek() → Amortized O(1)
+
+empty() → O(1)
+
+
