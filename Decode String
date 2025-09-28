@@ -1,0 +1,52 @@
+ Decode String 
+
+Problem Statement
+
+Given an encoded string, return its decoded form.
+
+Encoding rule: k[encoded_string] → repeat the string inside brackets k times.
+
+Example:
+
+Input: "3[a2[c]]"
+
+Output: "accaccacc"
+
+
+
+
+
+🧠 Approach
+
+Use a stack to process characters.
+
+For each character:
+
+If not ] → push into stack.
+
+If ] →
+
+1. Pop characters until [ to form substring.
+
+
+2. Pop digits to get repeat count k.
+
+
+3. Push back k * substring.
+
+
+
+
+Finally, join all stack items into the decoded string.
+
+
+
+        
+
+⏱ Complexity
+
+Time: O(n) → each char processed at most twice (push + pop).
+
+Space: O(n) → stack holds characters and substrings.
+
+
