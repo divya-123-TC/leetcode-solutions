@@ -1,0 +1,46 @@
+Design Circular Queue 
+
+Problem Statement
+
+Implement a circular queue with fixed capacity k. Support operations:
+
+enQueue(value) → Insert an element. Return true if success.
+
+deQueue() → Delete an element. Return true if success.
+
+Front() → Get the front item, or -1 if empty.
+
+Rear() → Get the last item, or -1 if empty.
+
+isEmpty() → Check if queue is empty.
+
+isFull() → Check if queue is full.
+
+
+ Approach
+
+Use a fixed-size array of length k.
+
+Keep three variables:
+
+front → points to index of front element.
+
+rear → points to index of last element.
+
+count → number of elements in queue.
+
+
+Use modulo % k to wrap indices circularly.
+
+
+
+
+
+⏱ Complexity
+
+Time: O(1) for all operations.
+
+Space: O(k) for the queue array.
+
+
+
