@@ -1,0 +1,71 @@
+Trapping Rain Water
+
+Problem Statement
+
+Given an array height[] representing elevation bars, find how much water can be trapped after raining.
+
+
+
+ Approach (Two Pointers)
+
+1. Initialize two pointers:
+
+left = 0, right = n-1
+
+left_max = height[left], right_max = height[right]
+
+
+
+2. While left < right:
+
+If left_max < right_max:
+
+Move left pointer → update left_max.
+
+Add trapped water: left_max - height[left].
+
+
+Else:
+
+Move right pointer → update right_max.
+
+Add trapped water: right_max - height[right].
+
+
+
+
+3. Continue until pointers meet.
+
+
+4. Return total trapped water.
+
+
+
+
+
+
+ Dry Run Example
+
+Input: [0,1,0,2,1,0,1,3,2,1,2,1]
+
+Step by step:
+
+Water trapped at each index = [0,0,1,0,1,2,1,0,0,1,0,0]
+
+Total = 6
+
+
+Output: 6
+
+
+
+
+⏱ Complexity
+
+Time: O(n) → each index processed once.
+
+Space: O(1) → only variables used.
+
+
+
+
