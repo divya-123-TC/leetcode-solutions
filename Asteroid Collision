@@ -1,0 +1,90 @@
+Asteroid Collision
+
+ Problem Statement
+
+We are given an array of integers asteroids.
+
+Each asteroid’s absolute value represents its size.
+
+The sign represents its direction:
+
+Positive → moving right
+
+Negative → moving left
+
+
+
+Rules:
+
+When two asteroids collide (right vs left), the smaller one explodes.
+
+If they are the same size, both explode.
+
+If they move in the same direction, they never collide.
+
+
+Return the state of the asteroids after all collisions.
+
+ Approach (Stack Based)
+
+1. Use a stack (res) to keep track of surviving asteroids.
+
+
+2. For each asteroid a:
+
+If a moves left and last asteroid in stack moves right → collision occurs.
+
+Compare their sizes using -a (size of negative asteroid).
+
+Cases:
+
+If -a > res[-1] → current asteroid wins, pop the last one.
+
+If -a == res[-1] → both destroyed.
+
+If -a < res[-1] → current asteroid destroyed.
+
+
+If no collision, push a into stack.
+
+
+
+3. Return the stack.
+
+
+
+
+
+
+
+ Dry Run Example
+
+Input: [5, 10, -5]
+
+res = []
+
+Add 5 → [5]
+
+Add 10 → [5, 10]
+
+-5 comes → collision with 10: 10 > 5 → -5 destroyed.
+
+
+Output: [5, 10]
+
+
+
+
+⏱ Complexity
+
+Time: O(n) → each asteroid pushed/popped once.
+
+Space: O(n) → stack may hold all asteroids in worst case.
+
+
+
+
+
+
+---
+
