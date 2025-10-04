@@ -1,0 +1,62 @@
+ Combination Sum II 
+
+ Problem Statement
+Given a collection of candidate numbers (candidates) and a target number (target), find *all unique combinations* in candidates where the candidate numbers sum to target.
+
+Each number in candidates *may only be used once* in the combination.
+
+> Note: The solution set must not contain duplicate combinations.
+
+ Example
+
+*Input:*
+```python
+candidates = [10,1,2,7,6,1,5]
+target = 8
+
+Output:
+
+[
+ [1,1,6],
+ [1,2,5],
+ [1,7],
+ [2,6]
+]
+
+
+---
+
+⚙ Approach
+
+1. Sort the candidates to easily skip duplicate values.
+
+
+2. Use backtracking to explore combinations:
+
+Keep track of the current sum and combination.
+
+If sum == target, store the combination.
+
+If sum > target, stop exploring further.
+
+
+
+3. Skip duplicate numbers at the same recursion level (if i > start and candidates[i] == candidates[i-1]: continue).
+
+
+4. Move to the next index after choosing an element since each can be used only once.
+
+
+
+
+
+🧾 Complexity Analysis
+
+Type	Complexity
+
+Time Complexity	O(2ⁿ) (Each element may be included or excluded)
+Space Complexity	O(n) (Recursion stack + temporary list)
+
+
+
+---
