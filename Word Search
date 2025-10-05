@@ -1,0 +1,71 @@
+ Word Search
+
+Problem Statement
+Given an m x n grid of characters and a string word, return *true* if the word exists in the grid.  
+The word can be formed from letters of sequentially adjacent cells, where adjacent cells are *horizontally or vertically neighboring*.  
+The same letter cell *may not be used more than once*.
+
+ Example
+
+*Input:*
+```python
+board = [
+  ["A","B","C","E"],
+  ["S","F","C","S"],
+  ["A","D","E","E"]
+]
+word = "ABCCED"
+
+Output:
+
+True
+
+Explanation:
+The letters are found by moving → A → B → C → C → E → D in valid directions.
+
+
+---
+
+🧠 Approach
+
+We use Depth First Search (DFS) with backtracking:
+
+1. Start from each cell that matches the first character.
+
+
+2. Explore in 4 directions (up, down, left, right).
+
+
+3. Use a path set to track visited cells to avoid reuse.
+
+
+4. If we match all letters, return True; otherwise, backtrack and continue.
+
+
+5. If no valid path is found, return False.
+
+
+
+
+
+🔍 Dry Run (Example: "ABCCED")
+
+Step	Cell	Letter	Action
+
+1	(0,0)	A	Match
+2	(0,1)	B	Match
+3	(0,2)	C	Match
+4	(1,2)	C	Match
+5	(2,2)	E	Match
+6	(2,1)	D	Match → ✅ Word Found
+
+
+
+
+
+🕒 Complexity Analysis
+
+Type	Complexity
+
+Time	O(N × 4^L) where N = total cells, L = length of word
+Space	O(L) for recursion + visited path
