@@ -1,0 +1,113 @@
+ N-Queens
+
+ Problem Statement
+
+The N-Queens puzzle is the challenge of placing n queens on an n×n chessboard so that no two queens attack each other.
+You must return all distinct solutions to the N-Queens puzzle.
+Each solution contains a distinct board configuration of the queen placements, represented as a list of strings.
+
+
+---
+
+💡 Example
+
+Input:
+
+n = 4
+
+Output:
+
+[
+ [".Q..",
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",
+  "Q...",
+  "...Q",
+  ".Q.."]
+]
+
+
+---
+
+🚀 Approach
+
+We use Backtracking to explore all possible positions for the queens row by row.
+
+1. Place one queen per row.
+
+
+2. Before placing, check:
+
+The column (cols)
+
+The positive diagonal (r + c)
+
+The negative diagonal (r - c)
+
+
+
+3. If the position is safe, place the queen and move to the next row.
+
+
+4. If we reach row n, we found one valid board configuration.
+
+
+5. Backtrack to try other possibilities.
+
+
+
+
+---
+
+🧠 Algorithm Steps
+
+1. Start with an empty board.
+
+
+2. Keep track of used columns and diagonals using sets.
+
+
+3. For each row, iterate through all columns:
+
+If safe, place the queen and recurse to the next row.
+
+If not, skip to the next column.
+
+
+
+4. Once all rows are filled, add the board to the result list.
+
+
+
+
+-
+
+⏱ Complexity Analysis
+
+Complexity	Explanation
+
+Time	O(N!) – exploring all valid placements
+Space	O(N²) – for the board and tracking sets
+
+
+
+---
+
+🧾 Output Example
+
+For n = 4, the valid boards are:
+
+.Q..
+...Q
+Q...
+..Q.
+
+and
+
+..Q.
+Q...
+...Q
+.Q..
