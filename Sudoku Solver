@@ -1,0 +1,61 @@
+ Sudoku Solver
+
+ Problem Statement
+Write a program to solve a 9x9 Sudoku puzzle by filling the empty cells.  
+Each row, column, and 3x3 sub-box must contain all digits from *1 to 9* exactly once.
+
+Empty cells are represented by *'.'*.
+
+---
+
+## 💡 Approach (Simple Explanation)
+- Use *backtracking* to fill the Sudoku board.
+- For each empty cell:
+  1. Try digits from *1 to 9*.
+  2. Check if placing the digit is valid:
+     - Not already in the *same row*  
+     - Not already in the *same column*  
+     - Not already in the *same 3x3 box*
+  3. If valid, place the number and move forward.
+  4. If stuck, *undo (backtrack)* and try another number.
+- Continue until the board is completely filled.
+
+---
+
+## 🧠 Algorithm Steps
+1. Find the next empty cell ('.').
+2. Try placing digits from *1 to 9*.
+3. For each digit:
+   - Check row, column, and 3x3 box validity.
+   - If valid → place it and move to the next cell.
+   - If not valid → try next digit.
+4. If no valid number → backtrack to previous cell.
+5. Stop when the board is fully solved.
+
+
+🧩 Example Input
+
+[
+ ["5","3",".",".","7",".",".",".","."],
+ ["6",".",".","1","9","5",".",".","."],
+ [".","9","8",".",".",".",".","6","."],
+ ["8",".",".",".","6",".",".",".","3"],
+ ["4",".",".","8",".","3",".",".","1"],
+ ["7",".",".",".","2",".",".",".","6"],
+ [".","6",".",".",".",".","2","8","."],
+ [".",".",".","4","1","9",".",".","5"],
+ [".",".",".",".","8",".",".","7","9"]
+]
+
+✅ Output
+
+A completed Sudoku board where all rows, columns, and boxes have digits 1–9.
+
+
+---
+
+⚙ Time & Space Complexity
+
+Time Complexity: O(9⁸²) (worst case, but faster in practice)
+
+Space Complexity: O(1) (modifies in place)
