@@ -1,0 +1,65 @@
+ Climbing Stairs Problem
+
+ Overview
+The *Climbing Stairs* problem is a famous *Dynamic Programming (DP)* question on *LeetCode (Problem #70)*.  
+It is similar to the Fibonacci sequence — each step can be reached either from one step below or two steps below.
+
+---
+
+## 🧩 Problem Statement
+You are climbing a staircase with n steps.  
+Each time you can climb either *1* or *2* steps.  
+Find how many *distinct ways* you can reach the top.
+
+---
+
+## 💡 Example
+*Input:*
+
+n = 5
+
+*Output:*
+
+8
+
+*Explanation:*  
+- Ways:  
+  1. 1+1+1+1+1  
+  2. 1+1+1+2  
+  3. 1+1+2+1  
+  4. 1+2+1+1  
+  5. 2+1+1+1  
+  6. 1+2+2  
+  7. 2+1+2  
+  8. 2+2+1  
+
+There are *8 distinct ways* to reach the top when n = 5.
+
+---
+
+## ⚙ Algorithm
+1. If n <= 3, return n directly (base cases).  
+2. Use two variables to store the previous two results (prev1, prev2).  
+3. Iterate from step 3 to n and calculate the current value as cur = prev1 + prev2.  
+4. Update prev2 and prev1 in each iteration.  
+5. Return cur as the total number of ways.
+
+
+🧪 Test Example
+
+obj = Solution()
+print(obj.climbStairs(5))
+
+Output:
+
+8
+
+
+---
+
+⏱ Time and Space Complexity
+
+Complexity	Description
+
+Time Complexity: O(n)	We iterate from 3 to n once.
+Space Complexity: O(1)	Only a few variables are used (constant space).
