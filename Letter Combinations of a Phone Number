@@ -1,0 +1,80 @@
+ Letter Combinations of a Phone Number
+
+Problem
+
+Given a string containing digits from 2 to 9, return all possible letter combinations that the number could represent.
+The mapping of digits to letters follows the same rule as on a phone keypad.
+
+
+ Example
+
+Input:
+
+digits = "23"
+
+Output:
+
+["ad","ae","af","bd","be","bf","cd","ce","cf"]
+
+
+---
+
+⚙ Approach
+
+Each digit maps to specific letters (like on old mobile keypads).
+
+Use backtracking to generate all possible combinations.
+
+Start with an empty string and build combinations by exploring one letter per digit at a time.
+
+When a complete combination is formed, add it to the result list.
+
+
+
+ Explanation
+
+digit_to_letters → Stores the mapping of digits to letters.
+
+backtrack(idx, comb) → Recursively forms all combinations:
+
+idx → current digit index.
+
+comb → current letter combination being built.
+
+
+Base Case:
+
+When idx == len(digits), one complete combination is ready → add it to res.
+
+
+Loop:
+
+For each possible letter of the current digit → append and explore next digit.
+
+
+
+
+ Time Complexity
+
+O(3ⁿ × 4ᵐ)
+
+n → number of digits mapping to 3 letters
+
+m → number of digits mapping to 4 letters
+
+
+
+ Output Example
+
+Input: "7"
+Output: ["p","q","r","s"]
+
+
+ Summary
+
+✅ Uses backtracking
+✅ Clean and efficient
+✅ Perfect for coding interviews and GitHub projects
+
+
+Would you like me to add a short title section with badges (like “Language: Python | Difficulty: Medium | Topic: Backtracking”) at the top — it’ll make your README look more professional on GitHub?
