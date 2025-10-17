@@ -1,0 +1,73 @@
+ Palindrome Partitioning
+
+ Problem Statement
+Given a string s, partition s such that every substring of the partition is a *palindrome*.  
+Return all possible palindrome partitioning of s.
+
+### Example
+*Input:*
+
+s = "aab"
+
+*Output:*
+
+[["a","a","b"], ["aa","b"]]
+
+ Approach
+
+We use *Depth-First Search (DFS)* with *backtracking* and *memoization*.
+
+1. Start from the first index and explore all possible substrings.
+2. If a substring is a *palindrome*, recursively partition the remaining string.
+3. Store results in a *memo dictionary* to avoid recomputation.
+4. When we reach the end of the string, we’ve found one valid partition.
+
+---
+
+ Algorithm
+
+1. Define a helper function dfs(start) that returns all palindrome partitions from index start.
+2. Base case: if start == len(s), return [[]].
+3. For each possible end index:
+   - Extract substring s[start:end].
+   - If it’s a palindrome, combine it with results from dfs(end).
+4. Memoize results for each start index to optimize performance.
+
+---
+Complexity Analysis
+
+Type	Complexity
+
+Time	O(N × 2^N) (exploring all partitions, optimized by memoization)
+Space	O(N × 2^N) (for recursion + storing partitions)
+
+
+
+---
+
+🎯 Key Concepts
+
+Backtracking
+
+Recursion
+
+Palindrome checking
+
+Memoization (Dynamic Programming optimization)
+
+
+
+ Example Dry Run
+
+Input: "aab"
+
+Step	Substring	Is Palindrome?	Action
+
+1	"a"	✅	Explore "ab"
+2	"a"	✅	Explore "b"
+3	"b"	✅	✅ Add ["a","a","b"]
+4	"aa"	✅	Explore "b"
+5	"b"	✅	✅ Add ["aa","b"]
+
+
+✅ Final Output: [["a","a","b"], ["aa","b"]]
