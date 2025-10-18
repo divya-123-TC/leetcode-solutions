@@ -1,0 +1,86 @@
+ Restore IP Addresses
+
+ Problem Statement
+Given a string s containing only digits, return *all possible valid IP address combinations* that can be formed by inserting three dots into s.
+
+Each valid IP address must contain *four integers* separated by dots, where:
+- Each integer is between 0 and 255.
+- Integers cannot have *leading zeros* (e.g., "01" ❌, "0" ✅).
+
+
+ Example
+
+### Input:
+```python
+s = "25525511135"
+
+Output:
+
+["255.255.11.135", "255.255.111.35"]
+
+
+ Approach (Simple Explanation)
+
+We use backtracking:
+
+1. Start from index 0 and recursively split the string into 4 parts.
+
+
+2. Each part must be 1 to 3 digits long.
+
+
+3. Skip invalid parts:
+
+If they start with '0' and are longer than 1.
+
+If their integer value is greater than 255.
+
+
+
+4. When 4 valid parts are formed and the entire string is used, add the combination to the result.
+
+
+
+
+
+
+Dry Run (Quick Example)
+
+Input: "25525511135"
+
+Step	Parts	Next Segment	Valid?	Action
+
+1	[]	"255"	✅	Continue
+2	["255"]	"255"	✅	Continue
+3	["255","255"]	"11"	✅	Continue
+4	["255","255","11"]	"135"	✅	Add result
+
+
+✅ Output → "255.255.11.135"
+Later another path forms "255.255.111.35"
+
+ Complexity
+
+Time: O(3⁴) ≈ 81 (since each part can be 1–3 digits)
+
+Space: O(4) recursion depth + output list
+
+
+
+---
+
+💬 Summary
+
+Feature	Details
+
+Technique	Backtracking
+Difficulty	Medium but easy to understand
+Asked In	Amazon, Google, Microsoft
+Focus Point	Valid IP rules + recursive partitioning
+
+
+
+
+🏁 Output
+
+["255.255.11.135", "255.255.111.35"]
