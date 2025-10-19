@@ -1,0 +1,84 @@
+Maximum Depth of Binary Tree
+
+ Problem Statement
+
+Given the root of a binary tree, return its maximum depth.
+The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+
+ Example
+
+Input:
+
+root = [3,9,20,null,null,15,7]
+
+Output:
+
+3
+
+Explanation:
+The longest path is 3 → 20 → 7, which contains 3 nodes.
+
+ Approach (Recursive DFS)
+
+We use recursion to calculate the maximum depth of the binary tree.
+
+1. If the current node is None → return 0 (base case).
+
+
+2. Otherwise, recursively find the maximum depth of:
+
+the left subtree
+
+the right subtree
+
+
+
+3. The result for the current node = 1 + max(left_depth, right_depth)
+
+
+
+
+ Algorithm Steps
+
+1. Start from the root node.
+
+
+2. If the node is None, return 0.
+
+
+3. Recursively call maxDepth() for left and right children.
+
+
+4. Take the maximum of both depths.
+
+
+5. Add 1 to include the current node.
+
+
+6. Return the final result.
+
+
+
+
+
+
+⏱ Time Complexity
+
+O(n) — Each node is visited once.
+
+🧮 Space Complexity
+
+O(h) — where h is the height of the tree (recursion stack).
+
+
+Output Example
+
+For tree [3,9,20,null,null,15,7],
+
+Maximum Depth = 3
+
+ Key Idea
+
+The recursive approach explores all possible paths from the root to leaves and returns the maximum depth efficiently.
+It’s short, elegant, and the most preferred solution in interviews.
