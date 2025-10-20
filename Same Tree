@@ -1,0 +1,142 @@
+ Same Tree
+
+🧩 Problem Statement
+
+Given the roots of two binary trees p and q, determine if they are identical or not.
+
+Two binary trees are considered the same if:
+
+1. They have the same structure, and
+
+
+2. The nodes have the same values at corresponding positions.
+
+
+
+
+---
+
+💡 Example 1
+
+Input:
+
+p:     1          q:     1
+      / \               / \
+     2   3             2   3
+
+Output:
+
+True
+
+✅ Both trees are identical.
+
+
+---
+
+💡 Example 2
+
+Input:
+
+p:     1          q:     1
+      /                 \
+     2                   2
+
+Output:
+
+False
+
+❌ Structure differs.
+
+
+---
+
+💡 Example 3
+
+Input:
+
+p:     1          q:     1
+      / \               / \
+     2   1             1   2
+
+Output:
+
+False
+
+❌ Node values differ.
+
+
+---
+
+🧠 Approach
+
+We use recursion to compare both trees node by node.
+
+Steps:
+
+1. If both nodes are None, return True (both subtrees are empty).
+
+
+2. If only one is None, return False (structure mismatch).
+
+
+3. If values differ, return False.
+
+
+4. Otherwise, recursively check:
+
+Left subtrees → isSameTree(p.left, q.left)
+
+Right subtrees → isSameTree(p.right, q.right)
+
+
+
+5. Return True only if all checks pass.
+
+
+
+
+
+
+🧾 Line-by-Line Explanation
+
+Line	Explanation
+
+if not p or not q:	Checks if one or both nodes are None.
+return p == q	Returns True if both are None, False if one is None.
+p.val == q.val	Compares current node values.
+self.isSameTree(p.left, q.left)	Recursively checks left subtrees.
+self.isSameTree(p.right, q.right)	Recursively checks right subtrees.
+and	Ensures all conditions must be True.
+
+
+
+---
+
+🔁 Dry Run
+
+Input:
+
+p = [1,2,3]
+q = [1,2,3]
+
+Steps:
+
+Step	p.val	q.val	Action
+
+1	1	1	Values same → check subtrees
+2	2	2	Values same → check subtrees
+3	None	None	True
+4	3	3	Values same → check subtrees
+5	None	None	True
+✅ All True → Final Output: True			
+
+
+
+---
+
+⏱ Complexity Analysis
+
+Type	Complexity	Explanation
+
+Time	O(n)	Each node is visited once
+Space	O(h)	Recursion stack (h = height of the tree)
