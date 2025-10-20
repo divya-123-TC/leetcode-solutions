@@ -1,0 +1,97 @@
+ Invert Binary Tree
+
+🧩 Problem Statement
+
+Given the root of a binary tree, invert the tree and return its root.
+
+Inversion means:
+
+> For every node in the tree, swap its left and right children.
+
+
+
+
+---
+
+💡 Example
+
+Input:
+
+4
+   /   \
+  2     7
+ / \   / \
+1  3  6  9
+
+Output:
+
+4
+   /   \
+  7     2
+ / \   / \
+9  6  3  1
+
+
+---
+
+🧠 Approach
+
+We use recursion (DFS) to visit each node and swap its children.
+
+Steps:
+
+1. Base case: If the current node is None, return.
+
+
+2. Swap: Exchange left and right children.
+
+
+3. Recursive calls:
+
+Invert the left subtree.
+
+Invert the right subtree.
+
+
+
+4. Return the root after processing.
+
+
+
+
+
+
+
+if not root:	Checks if current node is empty. Stops recursion.
+temp = root.left	Store the left child temporarily.
+root.left = root.right	Assign right child to left.
+root.right = temp	Assign stored left child to right (swap done).
+self.invertTree(root.left)	Invert the (new) left subtree.
+self.invertTree(root.right)	Invert the (new) right subtree.
+return root	Return the current node after inversion.
+
+
+
+---
+
+🔁 Dry Run
+
+Input: [4,2,7,1,3,6,9]
+
+Step	Node	Action
+
+1	4	Swap 2 ↔ 7
+2	7	Swap 6 ↔ 9
+3	2	Swap 1 ↔ 3
+✅	Tree inverted	Output: [4,7,2,9,6,3,1]
+
+
+
+---
+
+⏱ Complexity Analysis
+
+Type	Complexity	Explanation
+
+Time	O(n)	Every node is visited once
+Space	O(h)	Recursion stack (h = height of tree)
