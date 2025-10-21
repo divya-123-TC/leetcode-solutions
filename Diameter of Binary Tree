@@ -1,0 +1,103 @@
+Diameter of Binary Tree
+
+ Problem Statement
+Given the root of a binary tree, return the *diameter* of the tree.
+
+The *diameter* of a binary tree is the *length of the longest path* between any two nodes in the tree.  
+This path *may or may not pass through the root*.
+
+- The *length* of a path is measured by the *number of edges* between nodes.
+
+---
+
+## 🧠 Example
+
+### Input Tree
+
+1
+   / \
+  2   3
+ / \
+4   5
+
+### Possible Paths
+- 4 → 2 → 1 → 3 → length = 3  
+- 4 → 2 → 5 → length = 2  
+
+✅ *Longest path = 3, so the diameter is **3*.
+
+---
+
+## 💡 Approach
+
+This solution uses *Depth-First Search (DFS)* recursion.
+
+- For each node, we compute:
+  - Height of its *left* subtree
+  - Height of its *right* subtree
+- The *diameter through that node* = left_height + right_height
+- The global maximum of all these values is the final *diameter*.
+
+We use a variable res to keep track of the maximum diameter found during recursion.
+
+---
+
+## 🧩 Algorithm Steps
+
+1. Define a helper function dfs(root) that:
+   - Returns the height of the subtree rooted at root
+   - Updates the res (diameter) with l + r for each node
+
+2. Base condition: if root is None, return 0.
+
+3. Recursively call dfs on left and right subtrees.
+
+4. For every node:
+   - Calculate height: 1 + max(left, right)
+   - Update res: res = max(res, left + right)
+
+5. Finally, return res as the diameter.
+
+
+
+---
+
+⏱ Time and Space Complexity
+
+Complexity	Description
+
+Time	O(n) — each node is visited once
+Space	O(h) — recursion stack (where h is height of the tree)
+
+
+
+---
+
+🧮 Example Dry Run
+
+For the tree:
+
+1
+       / \
+      2   3
+     / \
+    4   5
+
+Node	Left Height	Right Height	l + r	res (max)	Returned Height
+
+4	0	0	0	0	1
+5	0	0	0	0	1
+2	1	1	2	2	2
+3	0	0	0	2	1
+1	2	1	3	3 ✅	3
+
+
+✅ Final Diameter = 3
+
+
+---
+
+🏁 Output
+
+Return Value:
+3
