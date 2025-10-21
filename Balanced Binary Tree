@@ -1,0 +1,117 @@
+ Balanced Binary Tree
+
+## 📘 Problem Statement
+Given the root of a binary tree, determine whether it is *height-balanced*.
+
+A *binary tree* is considered *balanced* if for every node in the tree,  
+the height difference between its left and right subtrees is *at most 1*.
+
+Formally:  
+For every node,
+
+| height(left subtree) - height(right subtree) | ≤ 1
+
+---
+
+## 🧠 Example
+
+### Example 1
+*Input Tree:*
+
+3
+   / \
+  9  20
+    /  \
+   15   7
+
+*Output:*  
+True
+
+*Explanation:*  
+The tree is balanced because the difference in height between the left and right subtrees of every node is ≤ 1.
+
+---
+
+### Example 2
+*Input Tree:*
+
+1
+   / \
+  2   2
+ / \
+3   3
+
+/ 
+4   4
+
+*Output:*  
+False
+
+*Explanation:*  
+The left subtree is much deeper than the right — difference > 1, so it’s not balanced.
+
+---
+
+## 💡 Approach
+
+We use *DFS (Depth-First Search)* recursion to check if the tree is balanced *and* calculate heights simultaneously.
+
+For every node:
+1. Recursively get:
+   - Whether the left subtree is balanced
+   - Whether the right subtree is balanced
+   - Their heights
+2. Check if:
+   - Both subtrees are balanced, *and*
+   - The difference between their heights ≤ 1
+3. Return:
+   - [is_balanced, height]
+
+This ensures each node’s balance is checked once efficiently.
+
+---
+
+## 🧩 Algorithm Steps
+
+1. If the node is None, return [True, 0] (an empty tree is balanced with height 0).  
+2. Recursively call dfs for the left and right subtrees.  
+3. Calculate:
+
+is_balanced = left_balanced and right_balanced and abs(left_height - right_height) <= 1
+
+4. Return [is_balanced, 1 + max(left_height, right_height)] — the balance status and height.  
+5. The final result is dfs(root)[0], i.e., the first element (True/False).
+
+---
+
+
+⏱ Time and Space Complexity
+
+Complexity	Description
+
+Time	O(n) — each node is visited once
+Space	O(h) — recursion stack (where h = height of tree)
+
+
+
+🧮 Example Dry Run
+
+For the tree:
+
+3
+       / \
+      9  20
+        /  \
+       15   7
+
+| Node | Left Height | Right Height | |Left-Right| | Balanced? | |------|--------------|---------------|--------------|------------| | 9 | 0 | 0 | 0 | ✅ | | 15 | 0 | 0 | 0 | ✅ | | 7 | 0 | 0 | 0 | ✅ | | 20 | 1 | 1 | 0 | ✅ | | 3 | 1 | 2 | 1 | ✅ |
+
+✅ Tree is Balanced
+
+
+---
+
+🏁 Output
+
+Return Value:
+True (if balanced) or False (if not balanced)
