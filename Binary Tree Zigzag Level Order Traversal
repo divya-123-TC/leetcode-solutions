@@ -1,0 +1,68 @@
+ Binary Tree Zigzag Level Order Traversal
+
+🔹 Problem Statement:
+
+Given the root of a binary tree, return the zigzag level order traversal of its nodes' values —
+i.e., from left to right, then right to left for the next level, and alternate between.
+
+
+---
+
+🔹 Example:
+
+Input:
+
+3
+     / \
+    9  20
+      /  \
+     15   7
+
+Output:
+
+[[3],[20,9],[15,7]]
+
+
+---
+
+🔹 Approach:
+
+This is a modified level order traversal:
+
+1. Perform BFS using a queue (like problem 102).
+
+
+2. Keep a boolean flag left_to_right to track traversal direction.
+
+
+3. For each level:
+
+Collect node values in a list.
+
+Reverse the list if direction is right-to-left.
+
+
+
+4. Toggle the direction after every level.
+
+
+
+
+---
+
+🔹 Complexity Analysis:
+
+Time Complexity: O(N)
+
+Space Complexity: O(N)
+
+
+
+---
+
+🔹 Key Idea:
+
+Alternate between normal and reversed order after each level to achieve a zigzag pattern.
+
+
+---
