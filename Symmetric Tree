@@ -1,0 +1,46 @@
+Symmetric Tree 
+
+# Symmetric Tree
+
+## Problem
+Check whether a binary tree is symmetric around its center (mirror of itself).
+
+### Input
+- root: Root node of the binary tree.
+
+### Output
+- True if the tree is symmetric, otherwise False.
+
+
+Explanation
+
+1. Check if tree is empty → return True (empty tree is symmetric).
+
+
+2. Define is_mirror(n1, n2) function to compare two nodes recursively:
+
+Both nodes None → return True
+
+One node None → return False
+
+Values equal and subtrees are mirrors → return True
+
+
+
+3. Call is_mirror on root.left and root.right.
+
+
+
+Complexity
+
+Time: O(n), n = number of nodes
+
+Space: O(h), h = tree height (recursion stack)
+
+
+Example
+
+Input:  [1,2,2,3,4,4,3]
+Output: True
+
+---
