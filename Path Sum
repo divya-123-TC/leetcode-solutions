@@ -1,0 +1,45 @@
+ Path Sum 
+
+markdown
+# Path Sum
+
+## Problem
+Check whether there exists a root-to-leaf path in a binary tree such that the sum of node values equals `targetSum`.
+
+### Input
+- `root`: Root node of the binary tree  
+- `targetSum`: Integer target sum
+
+### Output
+- `True` if such a path exists, otherwise `False`
+
+
+Explanation
+
+1. If node is None → return False (no path).
+
+
+2. If node is a leaf → check if remaining targetSum equals node value.
+
+
+3. Subtract node value from targetSum.
+
+
+4. Recursively check left and right subtrees.
+
+
+5. Return True if any path satisfies the condition.
+
+
+
+Complexity
+
+Time: O(n), n = number of nodes
+
+Space: O(h), h = tree height (recursion stack)
+
+
+Example
+
+Input: root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22
+Output: True
