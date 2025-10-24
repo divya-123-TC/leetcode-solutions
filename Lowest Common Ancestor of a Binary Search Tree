@@ -1,0 +1,106 @@
+ Lowest Common Ancestor of a Binary Search Tree
+
+
+
+📘 Problem Statement
+
+Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes p and q.
+The LCA of two nodes p and q is the lowest node in the BST that has both p and q as descendants (a node can be a descendant of itself).
+
+
+---
+
+💡 Example
+
+Input:
+
+6
+       / \
+      2   8
+     / \  / \
+    0  4 7  9
+      / \
+     3  5
+p = 2, q = 8
+
+Output:
+
+6
+
+Explanation:
+Node 6 is the lowest common ancestor of nodes 2 and 8.
+
+
+---
+
+🧠 Approach
+
+Since this is a Binary Search Tree, the values follow the BST property:
+
+Left child < Parent node < Right child
+
+
+We can use this property to efficiently find the LCA.
+
+Steps:
+
+1. Start from the root node.
+
+
+2. If both p and q are greater than root.val, move to the right subtree.
+
+
+3. If both p and q are less than root.val, move to the left subtree.
+
+
+4. If one lies on each side (or one is equal to the root), the current node is the LCA.
+
+
+
+
+
+
+🔍 Explanation 
+
+Line	Description
+
+while root:	Traverse the tree until the current node becomes None.
+if p.val > root.val and q.val > root.val:	If both nodes are greater than root, LCA must be in the right subtree.
+root = root.right	Move to the right subtree.
+elif p.val < root.val and q.val < root.val:	If both nodes are smaller, move to the left subtree.
+root = root.left	Move to the left subtree.
+else:	If neither of the above, current node is where the paths split → it’s the LCA.
+return root	Return the LCA node.
+
+
+
+---
+
+⏱ Time & Space Complexity
+
+Complexity	Value	Explanation
+
+Time	O(h)	Traverse along the height h of the BST.
+Space	O(1)	Only constant extra space used (iterative approach).
+
+
+
+---
+
+🌳 Example Trace
+
+For p = 2, q = 8 in the below tree:
+
+6
+       / \
+      2   8
+
+1. Start at root = 6
+
+p.val = 2 < 6, q.val = 8 > 6
+→ Split occurs, LCA = 6
+
+
+
+
+✅ Output → 6
