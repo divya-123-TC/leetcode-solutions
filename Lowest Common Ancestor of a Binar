@@ -1,0 +1,42 @@
+ Lowest Common Ancestor of a Binary Tree
+
+🧩 Problem Statement
+
+Given the root of a binary tree and two nodes p and q, find their lowest common ancestor (LCA) — the deepest node that has both p and q as descendants.
+
+💡 Code
+
+class Solution:
+    def lowestCommonAncestor(self, root, p, q):
+        if not root or root == p or root == q:
+            return root
+
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+
+        if left and right:
+            return root
+
+        return left or right
+
+🧠 Explanation
+
+If root is None or equals p or q → return root.
+
+Recursively search for p and q in left and right subtrees.
+
+If both sides return non-null → current node is the LCA.
+
+Otherwise, return whichever side is non-null.
+
+
+🧩 Example
+
+3
+       / \
+      5   1
+         / \
+        0   8
+
+If p=5, q=1 → LCA = 3
+If p=5, q=4 → LCA = 5
