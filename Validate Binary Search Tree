@@ -1,0 +1,50 @@
+Validate Binary Search Tree (BST)
+
+🧩 Problem Statement
+
+Check if a given binary tree is a valid Binary Search Tree (BST).
+
+In a BST:
+
+Left subtree values < parent’s value
+
+Right subtree values > parent’s value
+
+No duplicates allowed
+
+
+💡 Code
+
+class Solution:
+    def isValidBST(self, root):
+        def valid(node, minimum, maximum):
+            if not node:
+                return True
+            if not (minimum < node.val < maximum):
+                return False
+            return valid(node.left, minimum, node.val) and valid(node.right, node.val, maximum)
+        
+        return valid(root, float('-inf'), float('inf'))
+
+🧠 Explanation
+
+Use recursion with range (minimum, maximum) to ensure each node’s value fits its valid range.
+
+Update range while going down:
+
+Left child → (minimum, node.val)
+
+Right child → (node.val, maximum)
+
+
+If any node violates the range → return False.
+
+
+🧩 Example
+
+Input: [1,1]
+Tree:
+    1
+   /
+  1
+Output: False   # Because left child equals parent
