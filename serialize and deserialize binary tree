@@ -1,0 +1,98 @@
+
+1️⃣ Approach
+
+Serialize (Tree → String)
+
+Use pre-order traversal: Root → Left → Right.
+
+If node is None, append '#' as sentinel.
+
+Store values in a list, then join with space to form final string.
+
+
+Deserialize (String → Tree)
+
+Split the string into a list → use an iterator.
+
+Recursively read values:
+
+If '#' → return None.
+
+Otherwise → create a TreeNode, then build left & right subtree recursively.
+
+
+The tree is reconstructed exactly as original because the serialization preserved the structure.
+
+
+Key idea:
+
+Pre-order + sentinel '#' guarantees that tree structure (including null children) is preserved.
+
+
+
+---
+
+2️⃣ Complexity Analysis
+
+Operation	Time Complexity	Space Complexity
+
+Serialize	O(n)	O(n) for recursion stack + O(n) for vals list
+Deserialize	O(n)	O(n) for recursion stack + O(n) for split data
+
+
+Explanation:
+
+n = number of nodes in the tree.
+
+Each node is visited exactly once during serialize and deserialize.
+
+Extra space comes from recursion stack (max height of tree) + storing serialized string/list.
+
+
+
+---
+
+3️⃣ Steps in Simple Terms
+
+Serialize
+
+1. Start at root.
+
+
+2. If node exists → append value → go left → go right.
+
+
+3. If node is None → append '#'.
+
+
+4. Convert list → string.
+
+
+
+Deserialize
+
+1. Read next value from string.
+
+
+2. If '#' → return None.
+
+
+3. Else → create node → recursively build left & right.
+
+
+4. Return root.
+
+
+
+
+---
+
+4️⃣ Important Points
+
+Works for any binary tree, not just BST.
+
+Using '#' is mandatory to handle null children.
+
+Pre-order traversal ensures correct structure reconstruction.
+
+Efficient for interview coding and tree storage.
