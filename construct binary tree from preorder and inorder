@@ -1,0 +1,100 @@
+Build Tree from Preorder & Inorder
+
+1️⃣ Approach
+
+Goal: Reconstruct binary tree from:
+
+Preorder → Root → Left → Right
+
+Inorder → Left → Root → Right
+
+
+Steps:
+
+1. Create a mapping of inorder values → their indices for O(1) lookups.
+
+
+2. Convert preorder list into deque for efficient popleft() operations.
+
+
+3. Recursively build the tree:
+
+Base case: start > end → return None.
+
+Take root value from preorder (first element).
+
+Find its index in inorder → divide left & right subtrees.
+
+Recursively call for left (start → mid-1) and right (mid+1 → end).
+
+
+
+
+Key idea:
+
+Preorder gives root node order, inorder gives subtree boundaries.
+
+Use hashmap for O(1) root lookup in inorder.
+
+
+
+---
+
+2️⃣ Complexity Analysis
+
+Operation	Time Complexity	Space Complexity
+
+Build map	O(n)	O(n) for hashmap
+Build tree	O(n)	O(n) recursion stack + O(n) for deque
+
+
+Explanation:
+
+Each node is visited once.
+
+Hashmap avoids O(n) search in inorder → efficient.
+
+deque.popleft() is O(1).
+
+n = number of nodes.
+
+
+
+---
+
+3️⃣ Steps in Simple Terms
+
+BuildTree
+
+1. Map inorder values to indices → fast lookup.
+
+
+2. Preorder → root values in order → use deque.
+
+
+3. Recursive function build(start, end):
+
+Pop root from preorder.
+
+Find index in inorder → split into left & right.
+
+Recursively build subtrees.
+
+
+
+4. Return root node.
+
+
+
+
+---
+
+4️⃣ Important Points
+
+Works for any binary tree, not just BST.
+
+Mapping avoids repeated search in inorder → crucial optimization.
+
+Base case ensures recursion stops correctly.
+
+Preorder drives root selection, inorder drives subtree boundaries.
