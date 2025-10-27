@@ -1,0 +1,61 @@
+ Kth Smallest Element in a BST
+
+### 📘 Problem Statement
+Given the root of a *Binary Search Tree (BST)* and an integer k,  
+return the *kth smallest element* in the BST.
+
+In a BST, the *inorder traversal (Left → Root → Right)* gives nodes in *ascending order*.  
+Hence, the kth node during inorder traversal is the *kth smallest element*.
+
+---
+
+### 🧠 Approach
+We perform an *iterative inorder traversal* using a stack:
+1. Go to the *leftmost* node first.
+2. Pop nodes from stack one by one (each pop gives next smallest element).
+3. Keep a counter n.  
+   When n == k, return that node’s value.
+4. Move to the right subtree after visiting a node.
+
+
+
+🪜 Dry Run Example
+
+Input BST:
+
+3
+     / \
+    1   4
+     \
+      2
+
+k = 3
+
+Inorder Traversal: [1, 2, 3, 4]
+→ 3rd smallest = 3
+
+Step	Stack Contents	Current Node	n	Returned Value
+
+1	[3, 1]	1	1	-
+2	[3, 2]	2	2	-
+3	[3]	3	3	✅ 3
+
+
+
+---
+
+⏱ Time & Space Complexity
+
+Type	Complexity	Explanation
+
+⌛ Time	O(h + k)	We traverse left height h + k nodes
+💾 Space	O(h)	Stack stores at most height h nodes
+
+
+ Summary
+
+Uses inorder traversal (ascending order).
+
+Efficient and clean iterative approach.
+
+Suitable for interviews.
