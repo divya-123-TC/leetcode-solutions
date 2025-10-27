@@ -1,0 +1,94 @@
+ BST Iterator
+
+### 📘 Problem Statement
+Design an *iterator* for a *Binary Search Tree (BST)*.  
+The iterator should return the *next smallest number* in the BST (in ascending order).
+
+Implement the following methods:
+
+- __init__(root) → Initialize the iterator with the root node.  
+- next() → Return the next smallest element in the BST.  
+- hasNext() → Return whether there are more elements in the BST.
+
+---
+
+### 🧠 Intuition
+A BST’s *inorder traversal* (Left → Root → Right) gives nodes in *sorted order*.  
+We use a *stack* to simulate this traversal *iteratively* instead of using recursion.
+
+
+
+🪜 How It Works (Step-by-Step)
+
+🔹 Initialization
+
+Start from the root node.
+
+Keep pushing all left nodes into the stack.
+
+The top of the stack will always be the next smallest element.
+
+
+🔹 next() Method
+
+1. Pop the top element (res) — that’s the smallest unvisited node.
+
+
+2. If it has a right child, push all its left descendants into the stack.
+
+
+3. Return res.val.
+
+
+
+🔹 hasNext() Method
+
+Returns True if the stack is not empty, else False.
+
+
+
+---
+
+🌿 Example
+
+Input BST:
+
+7
+      / \
+     3   15
+        /  \
+       9   20
+
+Steps:
+
+Operation	Output	Stack (Top → Bottom)
+
+Init	-	[7, 3]
+next()	3	[7, 15, 9]
+next()	7	[15, 9]
+next()	9	[15]
+next()	15	[20]
+next()	20	[]
+hasNext()	False	[]
+
+
+Inorder Sequence: [3, 7, 9, 15, 20]
+
+
+---
+
+⏱ Time & Space Complexity
+
+Type	Complexity	Explanation
+
+⌛ Time	O(1) average per operation	Each node is pushed and popped once
+💾 Space	O(h)	Stack stores at most height h nodes
+
+
+ Summary
+
+Traverses BST in sorted order using stack.
+
+More efficient than recursive inorder traversal.
+
+Commonly asked interview question.
