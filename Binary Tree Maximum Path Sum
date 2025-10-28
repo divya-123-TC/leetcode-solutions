@@ -1,0 +1,67 @@
+Binary Tree Maximum Path Sum
+
+ Problem Statement
+Given the root of a binary tree, return the *maximum path sum*.  
+A path is any sequence of nodes connected by edges. The path may start and end at *any node* in the tree.
+
+Each node contains an integer value (which can be positive or negative).  
+Your task is to find the *maximum possible sum* of any valid path in the tree.
+
+---
+
+## 🧩 Example
+
+*Input Tree:*
+
+-10
+ /  \
+9   20
+    / \
+   15  7
+
+*Output:*
+
+42
+
+*Explanation:*
+The path 15 → 20 → 7 has the maximum sum 15 + 20 + 7 = 42.
+
+---
+
+## 🧠 Approach
+
+This problem is solved using *Depth-First Search (DFS)* traversal.
+
+For each node:
+1. Recursively calculate the *maximum gain* from its left and right subtrees.  
+2. If a subtree path sum is negative, ignore it by taking 0 (max(0, dfs(child))).
+3. Update the *global result* (res) with the *maximum path passing through the current node*:
+
+res = max(res, left_sum + right_sum + node.val)
+
+4. Return to the parent the *maximum single-side path sum*:
+
+return max(left_sum, right_sum) + node.val
+
+
+
+🧮 Complexity Analysis
+
+Complexity	Description
+
+Time	O(n) — Each node is visited once
+Space	O(h) — Recursion stack (h = height of tree)
+
+
+
+---
+
+✅ Key Points
+
+Handles both positive and negative node values.
+
+Uses DFS with recursion.
+
+Global variable res tracks the best path found so far.
+
+Efficient and widely accepted for interview problems (LeetCode
