@@ -1,0 +1,71 @@
+Recover Binary Search Tree 
+
+## 📘 Problem Statement
+Two nodes in a Binary Search Tree (BST) have been swapped by mistake.  
+Your task is to *recover the tree* without changing its structure.
+
+A BST has the property that the *inorder traversal* of the tree produces a *sorted sequence*.  
+When two nodes are swapped, this order is disturbed — our goal is to find and correct those two nodes.
+
+---
+
+## 💡 Intuition
+During an *inorder traversal*, the previous node should always have a smaller value than the current node.  
+If we find that prev.val > current.val, it means a violation of the BST property has occurred.
+
+We track:
+- first: the first node that violates the rule  
+- second: the node that comes after the first violation  
+After identifying both, we simply *swap their values* to fix the BST.
+
+---
+
+## 🧠 Approach
+1. Perform an *inorder traversal* of the BST.
+2. Detect the two misplaced nodes:
+   - The first node (first) is the previous node when the first inversion happens.
+   - The second node (second) is the current node when any inversion happens.
+3. After traversal, *swap their values*.
+4. The structure of the BST remains unchanged.
+
+---
+
+
+🧾 Example
+
+Input:
+
+3
+   / \
+  1   4
+     /
+    2
+
+Output:
+
+2
+   / \
+  1   4
+     /
+    3
+
+
+---
+
+🕒 Time and Space Complexity
+
+Time Complexity: O(N) — inorder traversal visits every node once
+
+Space Complexity: O(H) — recursion stack, where H is the tree height
+
+
+
+---
+
+🧩 Key Idea
+
+Detect inversions in inorder traversal.
+
+Only two nodes need to be swapped.
+
+Restore the BST without rebuilding or modifying its structure.
