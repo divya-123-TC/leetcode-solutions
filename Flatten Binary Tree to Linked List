@@ -1,0 +1,64 @@
+  
+
+This repository contains Python solutions for two important LeetCode problems —  
+*Flatten Binary Tree to Linked List* and *Number of Islands* — including approach, explanation, and implementation.  
+
+ Flatten Binary Tree to Linked List  
+
+### 📘 Problem Description  
+Given the root of a binary tree, flatten the tree into a linked list *in-place*.  
+After flattening, every node’s left child should be None, and the right child should point to the next node in preorder traversal.  
+
+### 💡 Example  
+*Input:*
+
+1
+/ \
+
+2   5 / \   
+3  4    6
+
+*Output:*
+
+1 → 2 → 3 → 4 → 5 → 6
+
+---
+
+### 🚀 Approach  
+
+1. Use *Depth-First Search (DFS)* to recursively process each node.  
+2. For each node:
+   - Recursively flatten its left and right subtrees.  
+   - If a left subtree exists:
+     - Attach the tail of the left subtree to the beginning of the right subtree.  
+     - Move the left subtree to the right side.  
+     - Set root.left = None.  
+3. Return the last (tail) node after flattening.  
+4. This way, each node connects only through the right pointer, forming a linked list.  
+
+
+
+🔍 Explanation (Line by Line)
+
+Step	Code	Explanation
+
+1	def dfs(root):	Defines a recursive helper to flatten subtrees.
+2	if not root:	Base case: return if current node is None.
+3	lefttail = dfs(root.left)	Flatten left subtree and get its tail.
+4	righttail = dfs(root.right)	Flatten right subtree and get its tail.
+5	if root.left:	If left subtree exists, rearrange pointers.
+6	lefttail.right = root.right	Connect end of left subtree to right subtree.
+7	root.right = root.left	Move left subtree to right.
+8	root.left = None	Set left child to None.
+9	last = righttail or lefttail or root	Return last node of flattened tree.
+10	dfs(root)	Start recursion from root.
+
+
+
+---
+
+⚙ Complexity
+
+Time Complexity: O(n) — each node is visited once.
+
+Space Complexity: O(h) — recursion stack (h = height of tree).
