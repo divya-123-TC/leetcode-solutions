@@ -1,0 +1,95 @@
+Number of Islands (BFS)
+
+📘 Problem Description
+
+Given an m × n grid of '1's (land) and '0's (water), count the number of islands.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically.
+
+
+---
+
+💡 Example
+
+Input:
+
+grid = [
+  ["1","1","0","0"],
+  ["1","0","0","1"],
+  ["0","0","1","1"],
+  ["0","0","0","0"]
+]
+
+Output:
+
+Number of Islands = 3
+
+
+---
+
+🚀 Approach
+
+1. Initialize a counter islands = 0 and a visited set.
+
+
+2. Loop through each cell in the grid:
+
+If the cell is '1' (land) and not visited, that means a new island is found.
+
+Increment islands and perform BFS starting from that cell.
+
+
+
+3. BFS (Breadth-First Search) explores all connected land cells in four directions (up, down, left, right) and marks them as visited.
+
+
+4. Continue scanning the grid until all islands are counted.
+
+
+
+
+
+
+🔍 Explanation (Line by Line)
+
+Step	Code	Explanation
+
+1	islands = 0	Initialize island count.
+2	visited = set()	Keeps track of explored cells.
+3	rows, cols = len(grid), len(grid[0])	Grid dimensions.
+4	def bfs(r, c):	BFS to explore connected land.
+5	q = deque()	Queue for BFS traversal.
+6	visited.add((r, c))	Mark starting cell as visited.
+7	while q:	Continue until queue is empty.
+8	directions = [[1,0],[-1,0],[0,1],[0,-1]]	Movement directions: down, up, right, left.
+9	for dr, dc in directions:	Explore all directions.
+10	if 0 <= r < rows ...	Ensure valid neighbor and unvisited land.
+11	q.append((r, c))	Enqueue neighbor and mark visited.
+12	Outer loops	Scan entire grid.
+13	if grid[r][c] == "1" and not visited:	Found a new island start.
+14	islands += 1	Count the new island.
+15	bfs(r, c)	Explore the full island using BFS.
+16	return islands	Return total number of islands.
+
+
+
+---
+
+⚙ Complexity
+
+Time Complexity: O(rows × cols) — each cell is visited once.
+
+Space Complexity: O(rows × cols) — for visited set and BFS queue.
+
+
+
+
+
+🧠 Concepts Used
+
+DFS (Depth-First Search): For tree flattening (recursion).
+
+BFS (Breadth-First Search): For island detection (graph traversal).
+
+In-place modification: Tree flattened without extra space.
+
+Visited Set: Prevents re-visiting nodes in grid traversal.
