@@ -1,0 +1,54 @@
+ Clone Graph
+
+
+
+## 📘 Problem Statement
+Given a reference of a node in a connected undirected graph, return a deep copy (clone) of the graph.  
+Each node contains a value (`val`) and a list of its neighbors.
+
+## 💡 Approach
+We use **DFS** and a **hash map (dictionary)** to clone nodes recursively.
+
+### Idea:
+1. Maintain a dictionary `oldToNew` mapping original nodes → cloned nodes.
+2. For each node:
+   - If already cloned, return it.
+   - Otherwise, create a new node and clone all its neighbors recursively.
+3. Return the clone of the input node.
+
+This ensures:
+- No infinite recursion (handles cycles).
+- Each node is cloned only once.
+
+
+🧩 Example
+
+Input:
+1 -- 2
+|    |
+4 -- 3
+
+Output (cloned graph with same structure):
+1' -- 2'
+|      |
+4' -- 3'
+
+⏱ Complexity Analysis
+
+Complexity	Explanation
+
+Time: O(N + E)	Visit each node and edge once.
+Space: O(N)	For hash map + recursion stack.
+
+
+🧠 Concept
+
+This problem uses DFS + HashMap to perform a deep copy of a graph while preserving all connections and avoiding duplicates.
+
+🗝 Key Points
+
+The oldToNew dictionary prevents infinite loops.
+
+The recursion ensures neighbors are cloned correctly.
+
+Works for graphs with cycles, self-loops, or single nodes.
