@@ -1,0 +1,42 @@
+
+ Surrounded Regions 
+
+## 📘 Problem Statement
+Given an m x n board containing 'X' and 'O', capture all regions surrounded by 'X'.  
+A region is captured by flipping all `'O'`s into `'X'`s in that surrounded region.
+
+## 🔍 Example
+*Input:*
+
+X X X X X O O X X X O X X O X X
+
+*Output:*
+
+X X X X X X X X X X X X X O X X
+
+## 💡 Approach
+1. Any 'O' connected to a border 'O' *cannot be captured*.  
+2. Perform a DFS from all border `'O'`s and mark them temporarily as 'T'.
+3. Convert all remaining `'O'`s to 'X' (they are surrounded).
+4. Convert `'T'`s back to 'O' (safe cells).
+
+### Steps:
+- Scan the border cells.
+- For every 'O' on the border, start DFS and mark all connected `'O'`s as 'T'.
+- After DFS is done, replace:
+  - 'O' → 'X'
+  - 'T' → 'O'
+
+
+⏱ Complexity Analysis
+
+Complexity	Explanation
+
+Time: O(M × N)	Each cell is visited at most once.
+Space: O(M × N)	DFS recursion stack in worst case.
+
+
+🧩 Concept
+
+This problem is a DFS flood-fill variation.
+We mark all safe regions connected to borders first, then capture only the isolated 'O' regions.
