@@ -1,0 +1,114 @@
+ Pacific Atlantic Water Flow
+
+### 🧩 Problem Statement
+You are given an m x n matrix of non-negative integers called heights, where heights[r][c] represents the height of a cell.  
+
+Water can flow from a cell to another cell if it is *next to it (up, down, left, or right)* and its height is *less than or equal* to the current cell's height.  
+
+- The *Pacific Ocean* touches the *top and left* edges of the matrix.  
+- The *Atlantic Ocean* touches the *bottom and right* edges.
+
+Return a list of all coordinates where water can flow to *both the Pacific and Atlantic oceans*.
+
+---
+
+### 💡 Example
+*Input:*
+```python
+heights = [
+  [1,2,2,3,5],
+  [3,2,3,4,4],
+  [2,4,5,3,1],
+  [6,7,1,4,5],
+  [5,1,1,2,4]
+]
+
+Output:
+
+[[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]
+
+Explanation:
+Cells like (3,0) and (1,4) can flow to both the Pacific (top/left) and Atlantic (bottom/right) oceans.
+
+
+---
+
+⚙ Approach (Simple DFS)
+
+Instead of starting from every cell, we reverse the problem:
+
+1. Start DFS from ocean borders:
+
+From the Pacific (top row & left column)
+
+From the Atlantic (bottom row & right column)
+
+
+
+2. During DFS, only move to a neighbor if its height is greater than or equal to the current cell’s height.
+
+
+3. Keep track of visited cells for each ocean using two sets:
+
+pacific
+
+atlantic
+
+
+
+4. Finally, the answer = cells that are present in both sets.
+
+
+
+
+---
+
+🧠 Intuition
+
+We simulate water flow backward — instead of water flowing down to the ocean, we let the ocean "climb up" to all reachable cells that can flow into it.
+Each cell reachable by both oceans is part of the final answer.
+
+
+-
+
+⏱ Time and Space Complexity
+
+Type	Complexity	Explanation
+
+Time	O(m * n)	Each cell is visited at most twice (once per ocean)
+Space	O(m * n)	For recursion stack and visited sets
+
+
+
+---
+
+🧾 Key Points
+
+DFS from ocean borders instead of every cell.
+
+Reverse flow: move only to equal or higher heights.
+
+Simple and clean — works efficiently even for large grids.
+
+Alternative
+
+You can also use BFS (Queue) instead of DFS to avoid recursion depth issues, but the logic remains the same.
+
+
+---
+
+✨ Output Example Visualization
+
+P: Pacific-reachable
+A: Atlantic-reachable
+B: Both oceans
+
+Example:
+B B . . B
+. . B B B
+. B B . .
+B B . . B
+B . . . .
+
+
+---
