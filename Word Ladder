@@ -1,0 +1,121 @@
+Word Ladder
+ Problem Statement
+
+You are given:
+
+beginWord: the starting word
+
+endWord: the target word
+
+wordList: a list of valid words
+
+
+In one step, you can change exactly one letter, and each new word must exist in the wordList.
+
+Return the length of the shortest transformation sequence from beginWord to endWord, such that:
+
+1. Only one letter can be changed at a time.
+
+
+2. Each transformed word must exist in the wordList.
+
+
+
+If there is no valid transformation sequence, return 0.
+
+
+---
+
+🧠 Example
+
+Input:
+
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log","cog"]
+
+Output:
+
+5
+
+Explanation:
+
+hit → hot → dot → dog → cog
+
+The shortest transformation sequence length is 5.
+
+
+---
+
+💡 Approach
+
+We use Breadth-First Search (BFS) because it finds the shortest path first.
+
+To efficiently find words that differ by only one letter,
+we generate intermediate patterns by replacing each letter with *.
+
+For example:
+
+"hot" → "ot", "h*t", "ho"
+
+If two words share a pattern, they are neighbors (can transform into each other in one step).
+
+
+---
+
+🧩 Algorithm Steps
+
+1. Check if endWord exists in the word list.
+If not, return 0.
+
+
+2. Build a pattern map (dictionary):
+
+For each word, create patterns by replacing each letter with *.
+
+Example:
+"dog" → og, d*g, do
+
+Store all words matching the same pattern together.
+
+
+
+3. Perform BFS (Level-by-Level Search):
+
+Start with beginWord in a queue.
+
+For each word, check all one-letter patterns.
+
+Visit all new words (not already visited).
+
+If endWord is found, return the number of levels (steps).
+
+
+
+4. If BFS finishes without finding endWord, return 0.
+
+
+
+
+ Example Walkthrough
+
+Step	Queue Contents	Current Word	Next Words Found	Path Length
+
+1	["hit"]	hit	hot	1
+2	["hot"]	hot	dot, lot	2
+3	["dot","lot"]	dot → dog, lot → log	dog, log	3
+4	["dog","log"]	dog → cog ✅	cog	4
+5	["cog"]	Found endWord	-	5
+
+
+✅ Output = 5
+
+
+---
+
+🕒 Time & Space Complexity
+
+Type	Complexity	Explanation
+
+⏰ Time	O(N × L²)	N = number of words, L = word length (pattern generation + BFS)
+💾 Space	O(N × L)	For storing patterns and queue data
