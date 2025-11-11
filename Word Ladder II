@@ -1,0 +1,80 @@
+Word Ladder II
+Problem Statement
+
+Given two words, beginWord and endWord, and a list of words wordList,
+find all the shortest transformation sequences from beginWord to endWord, such that:
+
+1. Only one letter can be changed at a time.
+
+
+2. Each transformed word must exist in the wordList.
+
+
+
+Return all the shortest transformation sequences in any order.
+
+If no such sequence exists, return an empty list.
+
+ Example
+
+Input
+
+beginWord = "hit"
+endWord = "cog"
+wordList = ["hot","dot","dog","lot","log","cog"]
+
+Output
+
+[
+  ["hit","hot","dot","dog","cog"],
+  ["hit","hot","lot","log","cog"]
+]
+
+
+ Approach (BFS + DFS)
+
+Step 1️⃣: BFS (Shortest Distance)
+
+Use Breadth-First Search from beginWord.
+
+Create a pattern map for one-letter transformations (like h*t → hot, hit).
+
+Store the shortest distance from beginWord to every reachable word.
+
+This ensures we only consider minimum-length transformations.
+
+
+Step 2️⃣: DFS (Backtracking)
+
+Once BFS is done, start a Depth-First Search from endWord back to beginWord.
+
+At each step, only move to words whose distance is exactly -1 smaller.
+
+Reverse each valid path and add it to the result list.
+
+
+This combination ensures: ✅ Only shortest paths
+✅ No memory overflow
+✅ Clean and efficient traversal
+
+
+
+
+ Explanation
+
+Step	Action	Description
+
+1	Convert wordList to set	Faster lookup (O(1))
+2	Build pattern_map	Each pattern (e.g., h*t) connects similar words
+3	BFS	Calculates shortest distances from beginWord
+4	DFS	Backtracks from endWord to collect all shortest paths
+5	Return result	All shortest transformation sequences
+
+
+
+ Complexity Analysis
+
+Type	Complexity	Reason
+
+Time Complexity	O(N × L²)	For each word of length L, we build patterns and explore neighbors
+Space Complexity	O(N × L)	For storing pattern map and distance dictionary
