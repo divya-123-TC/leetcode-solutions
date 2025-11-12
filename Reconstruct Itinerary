@@ -1,0 +1,116 @@
+  Reconstruct Itinerary
+Problem Description
+You are given a list of airline tickets represented by pairs of departure and arrival airports [from, to].  
+Reconstruct the itinerary in order *starting from "JFK", using **all tickets exactly once*.
+
+If there are multiple valid itineraries, return the one that is *lexicographically smallest* when read as a single string of airport codes.
+
+---
+
+## 🧠 Example
+
+*Input:*
+```python
+[["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+
+Output:
+
+["JFK","ATL","JFK","SFO","ATL","SFO"]
+
+
+---
+
+💡 Approach (Easy Explanation)
+
+1. Treat the tickets as a directed graph:
+
+Each from → to is an edge (a flight route).
+
+
+
+2. We must use all edges exactly once, so this becomes an Eulerian Path problem.
+
+
+3. To ensure lexicographically smallest order, we:
+
+Sort destinations in reverse order.
+
+Use .pop() from the end (efficient O(1) removal and smallest first).
+
+
+
+4. Perform a Depth-First Search (DFS):
+
+Visit destinations while there are unused edges.
+
+Append the current airport after exploring all its outgoing edges (post-order).
+
+Finally, reverse the result to get the correct itinerary.
+
+
+
+
+
+
+
+🔍 Line-by-Line Explanation
+
+Line	Code	Explanation
+
+1	from collections import defaultdict	Simplifies graph creation.
+4	graph = defaultdict(list)	Creates an empty list for each new airport automatically.
+5	for frm, to in sorted(tickets, reverse=True):	Sort in reverse so smallest lex order is at the end.
+6	graph[frm].append(to)	Build adjacency list for all flights.
+9	def dfs(current):	Recursive function for depth-first traversal.
+10	while graph[current]:	Continue until no outgoing flights left.
+11	next_airport = graph[current].pop()	Choose lexicographically smallest next airport.
+12	dfs(next_airport)	Recurse to the next destination.
+13	result.append(current)	Backtrack: add airport after exploring all flights.
+16	dfs("JFK")	Always start itinerary from JFK.
+17	return result[::-1]	Reverse because we added airports in post-order.
+
+
+
+---
+
+🧮 Complexity Analysis
+
+Type	Complexity	Explanation
+
+⏱ Time	O(E log E)	Sorting tickets dominates. Each edge used once.
+💾 Space	O(E)	Graph, recursion stack, and result list.
+
+
+
+---
+
+🧭 Example Dry Run
+
+Tickets:
+[["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+
+Step 1 – Build Graph (Reverse Sorted):
+
+JFK → [SFO, ATL]
+SFO → [ATL]
+ATL → [SFO, JFK]
+
+Step 2 – DFS Order (Post-order appending):
+
+result (before reverse): [SFO, ATL, JFK, ATL, SFO, JFK]
+result[::-1]: ["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"]
+
+✅ Final Itinerary: ["JFK", "ATL", "JFK", "SFO", "ATL", "SFO"]
+
+
+---
+
+⚙ How to Run
+
+python3 main.py
+
+Example test:
+
+if _name_ == "_main_":
+    tickets = [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+    print(Solution().findItinerary(tickets))
