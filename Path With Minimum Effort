@@ -1,0 +1,77 @@
+Path With Minimum Effort 
+ Problem Statement
+You are given a 2D grid heights where each cell represents the height of a location.  
+You start from the *top-left cell (0,0)* and must reach the *bottom-right cell (rows-1, cols-1)*.
+
+ Allowed moves
+You may move *up, down, left, or right*.
+
+Effort of a move
+Moving from cell (x1, y1) to (x2, y2) has effort:
+
+effort = abs(heights[x1][y1] - heights[x2][y2])
+
+ Path Effort
+The *effort of a path* is:
+
+maximum effort taken in any single step of the path.
+
+ Goal
+Find the *path from start to end* where the *maximum step effort* is as *small as possible*.
+
+---
+
+ Example
+
+*Input:*
+
+[[1,2,2], [3,8,2], [5,3,5]]
+
+*Output:*
+
+2
+
+*Explanation:*  
+The best path minimizes the maximum height difference.  
+One such optimal path gives a maximum step difference of *2*.
+
+---
+
+## 🚀 Approach — Modified Dijkstra’s Algorithm
+
+This problem cannot be solved using regular BFS or DFS because:
+- We are not minimizing sum of steps.
+- We are minimizing the *maximum step* in the path.
+
+### Why Dijkstra?
+Dijkstra normally finds the shortest path based on sum of weights.  
+Here, we modify it to store:
+
+effort_so_far = maximum difference along the path
+
+For each neighbor:
+
+new_effort = max(effort_so_far, step_difference)
+
+We always expand the path with the *minimum possible maximum effort* first.
+
+### Key Points
+- Use a *min-heap* (effort, row, col)
+- Use a dist[][] matrix to store the *best (minimum) effort* to reach each cell.
+- Stop when bottom-right cell is popped from the heap.
+
+---
+
+
+⏱ Time & Space Complexity
+
+Complexity	Value
+
+Time	O((m*n) log (m*n))
+Space	O(m*n)
+
+
+Where m = rows, n = columns.
+
+
+---
