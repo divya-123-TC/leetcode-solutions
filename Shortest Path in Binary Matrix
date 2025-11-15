@@ -1,0 +1,92 @@
+Shortest Path in Binary Matrix 
+This repository contains a Python implementation of the Shortest Path in a Binary Matrix problem using Breadth-First Search (BFS).
+The goal is to find the shortest path from the top-left corner of the grid to the bottom-right corner, moving through cells with value 0, and movement is allowed in eight directions.
+
+Problem Description
+
+You are given an n x n binary matrix grid where:
+
+0 means the cell is open
+
+1 means the cell is blocked
+
+Your task is to return the length of the shortest clear path, starting at (0,0) and ending at (n-1,n-1).
+
+A clear path means:
+
+Every visited cell must be 0
+
+Movement is allowed in 8 directions: up, down, left, right, and all diagonals
+
+If no valid path exists, return -1.
+
+🎯 Why BFS?
+
+This problem is a classic case of shortest path in an unweighted grid.
+Breadth-First Search guarantees the shortest path because:
+
+It explores level by level
+
+The first time you reach the destination, that path is the shortest
+
+BFS avoids unnecessary paths
+
+This makes BFS the ideal solution.
+
+🔄 Movement Directions
+
+These 8 directions are used:
+
+↖  ↑  ↗
+←   →  
+↙  ↓  ↘
+
+
+By using diagonals, we can reach the destination faster if the path is available.
+
+🧠 Algorithm Intuition (Simple Explanation)
+
+Start from (0, 0) with distance 1.
+
+Use a queue to explore the grid.
+
+Each step takes you to neighbors in 8 possible directions.
+
+Skip blocked cells, visited cells, or out-of-bounds cells.
+
+If we reach (n-1, n-1), immediately return path length.
+
+If BFS finishes without reaching the end, path does not exist → return -1.
+
+📌 Important Edge Cases
+
+✔️ The starting cell (0,0) is blocked → return -1
+✔️ The ending cell (n-1,n-1) is blocked → return -1
+✔️ Grid of size 1x1
+
+If it's 0, answer = 1
+
+If it's 1, answer = -1
+✔️ Entire grid is open → BFS finds shortest diagonal path
+✔️ Grid with barriers surrounding the start or end → no solution
+
+🧪 Example
+
+Input
+
+[
+  [0,1],
+  [1,0]
+]
+
+
+Valid path
+
+(0,0) ➜ (1,1)
+
+
+Output
+
+2
+
+ells early avoids extra work.
