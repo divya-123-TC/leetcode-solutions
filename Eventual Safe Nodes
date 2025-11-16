@@ -1,0 +1,64 @@
+Eventual Safe Nodes
+
+ Problem Statement
+You are given a *directed graph*, where each node points to some other nodes.  
+A node is called *eventually safe* if every possible path starting from it *leads to a terminal node* and *never enters a cycle*.
+
+### ✔ Safe Node  
+A node is safe if:
+- It is *not* part of a cycle  
+- It does *not lead* to any node that is part of a cycle  
+- All outgoing edges eventually reach safe nodes  
+
+### 🎯 Goal  
+Return *all safe nodes* in *increasing order*.
+
+---
+
+## 🧠 Approach
+
+We perform a *DFS with memoization*:
+
+- Use a dictionary safe to store each node’s status:
+  - safe[i] = True → node i is safe  
+  - safe[i] = False → node i is unsafe or currently being explored  
+- If a node revisits itself during DFS → it is part of a *cycle*, so unsafe  
+- If *any* neighbor is unsafe → current node is unsafe  
+- If *all* neighbors are safe → current node is safe  
+
+Finally, we collect all nodes marked safe.
+
+
+---
+
+📝 Explanation of Key Steps
+
+🔹 Step 1:
+
+Store results of nodes in a dictionary safe to avoid repeated DFS.
+
+🔹 Step 2:
+
+Mark a node as False before exploring neighbors to detect cycles.
+
+🔹 Step 3:
+
+If any neighbor is unsafe → current node remains False.
+
+🔹 Step 4:
+
+If all neighbors are safe → mark the node True.
+
+🔹 Step 5:
+
+Add all safe nodes to the final list.
+
+
+---
+
+📊 Complexity
+
+Metric	Value
+
+Time Complexity	O(V + E) — DFS on each node once
+Space Complexity	O(V) — recursion + memo
