@@ -1,0 +1,70 @@
+ Course Schedule IV
+
+ Problem Statement
+You are given:
+- *numCourses* → total number of courses (0 to n−1)
+- *prerequisites* → list of pairs [a, b] meaning  
+  *course a requires course b first*
+- *queries* → list of pairs [u, v] asking:  
+  👉 Is course **u* a prerequisite (direct or indirect) of course *v?
+
+Your task is to return a list of booleans answering each query.
+
+---
+
+## 🧠 Key Idea
+
+We need to find:
+- *Direct prerequisites* (given)
+- *Indirect prerequisites*  
+  Example: if 0 → 1 and 1 → 2 then 0 → 2 is also True.
+
+To solve this, we use a *transitive closure* approach (similar to Floyd–Warshall algorithm).
+
+---
+
+## ✔ Approach
+
+### 1️⃣ Create a prerequisite matrix  
+isPre[u][v] = True  
+means u is a prerequisite of v.
+
+### 2️⃣ Mark direct prerequisites  
+From input [a, b] → mark isPre[a][b] = True.
+
+### 3️⃣ Compute indirect prerequisites  
+If:
+- i → k is True  
+- k → j is True  
+Then:
+- i → j becomes True
+
+Meaning:  
+i is an ancestor of k, and k is an ancestor of j → so i is ancestor of j
+
+### 4️⃣ Answer queries  
+For each query [u, v], return isPre[u][v].
+
+-
+
+📝 Example
+
+Input:
+
+numCourses = 4
+prerequisites = [[0,1], [1,2], [2,3]]
+queries = [[0,3], [1,3], [3,0]]
+
+Output:
+
+[True, True, False]
+
+
+---
+
+💡 Complexity
+
+Type	Complexity
+
+Time	O(n³)
+Space	O(n²)
