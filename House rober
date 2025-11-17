@@ -1,0 +1,82 @@
+Problem Statement
+
+You are given an array nums where each element represents the amount of money in a house.
+You are a thief planning to rob houses, but you cannot rob two adjacent houses.
+Your goal is to return the maximum money you can rob without alerting the police.
+
+
+---
+
+💡 Intuition
+
+At every house, you have two choices:
+
+1. Skip the current house → keep the money you already have (max_rob)
+
+
+2. Rob the current house → take its money + best money from two houses before (prev_rob + cur_val)
+
+
+
+Choose whichever gives more money.
+
+
+---
+
+🧠 Explanation of Variables
+
+prev_rob → Best money if you robbed up to house i−2
+
+max_rob → Best money if you robbed up to house i−1
+
+cur_val → Money in the current house
+
+temp → Best money at the current step
+
+
+We update values as we move through the houses.
+
+
+---
+
+🔁 Algorithm (Step-by-Step)
+
+1. Start with prev_rob = 0 and max_rob = 0
+
+
+2. Loop through each house value:
+
+Calculate the best choice:
+
+temp = max(max_rob, prev_rob + cur_val)
+
+Update:
+
+prev_rob = max_rob
+max_rob = temp
+
+
+
+3. After the loop, return max_rob as the final answer.
+
+
+
+
+---
+
+🧮 Dry Run Example
+
+Input:
+
+nums = [2, 7, 9, 3, 1]
+
+House	Value	prev_rob	max_rob	Best Choice
+
+1	2	0	0 → 2	Rob
+2	7	2	2 → 7	Rob
+3	9	7	7 → 11	Rob
+4	3	11	11 → 11	Skip
+5	1	11	11 → 12	Rob
+
+
+✅ Final Answer: 12
