@@ -1,0 +1,75 @@
+Coin Change Problem (Dynamic Programming)
+
+🧩 Problem Statement
+
+You are given:
+
+A list of coin denominations coins
+
+A target value amount
+
+
+Your task is to find the minimum number of coins required to make the given amount using unlimited coins of each denomination.
+
+If the amount cannot be formed using any combination of the coins, return -1.
+
+
+---
+
+🎯 Example
+
+Input:
+
+coins = [1, 2, 5]
+amount = 11
+
+Output:
+
+3
+
+Explanation:
+11 can be made using three coins → 5 + 5 + 1.
+
+
+---
+
+🧠 Approach: Dynamic Programming
+
+We use a 1D DP array where:
+
+dp[x] = minimum number of coins needed to make amount x.
+
+Steps:
+
+1. Initialize the DP array with a large value (amount + 1) meaning "impossible".
+
+
+2. Set dp[0] = 0 because 0 coins are needed to make amount 0.
+
+
+3. For each amount from 1 to amount, try every coin.
+
+
+4. Update the dp table using:
+
+dp[a] = min(dp[a], 1 + dp[a - c])
+
+
+5. Finally, check:
+
+If dp[amount] changed → return it
+
+Else → return -1
+
+
+
+
+
+---
+
+🧮 Time & Space Complexity
+
+Complexity	Value
+
+Time	O(amount × number of coins)
+Space	O(amount)
