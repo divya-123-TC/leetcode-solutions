@@ -1,0 +1,100 @@
+ Unique Paths
+
+
+🧩 Problem Overview
+
+You are given a grid of size m × n.
+A robot starts at the top-left corner and can move only:
+
+➡ Right
+
+⬇ Down
+
+
+Your task is to compute the total number of unique paths to the bottom-right corner.
+
+
+---
+
+🎯 Core Insight
+
+To reach a cell (r, c), the robot can come from:
+
+the left cell (r, c-1)
+
+the top cell (r-1, c)
+
+
+Thus, the number of paths follows the DP relation:
+
+dp[r][c] = dp[r][c - 1] + dp[r - 1][c]
+
+
+---
+
+🚀 Space Optimization Strategy
+
+Instead of creating the full DP matrix (m × n), observe:
+
+The current row depends only on the previous row.
+
+So we maintain:
+
+aboveRow → the row above
+
+currentRow → the row being computed
+
+
+
+Both arrays are of size n.
+
+
+---
+
+🧠 Why Initialize Rows with All 1s?
+
+Every row starts with 1s because:
+
+First row: only horizontal (right) moves → 1 way to reach each cell
+
+First column: only vertical (down) moves → always 1 way
+
+
+Initializing with [1] * n ensures:
+
+First column is correct
+
+Other columns get updated using the DP formula
+
+
+
+🔍 Example: m = 3, n = 4
+
+Row 0: 1 1 1 1
+Row 1: 1 2 3 4
+Row 2: 1 3 6 10
+
+Final Answer: 10 unique paths
+
+
+---
+
+📊 Complexity Analysis
+
+Aspect	Value
+
+Time	O(m × n)
+Space	O(n) (optimized)
+Technique	Dynamic Programming
+
+
+
+---
+
+🏁 Summary
+
+Movement allowed only right/down → simple combinatorial grid.
+
+Each cell depends on left + top (classic DP pattern).
+
+Space optimized using single-row rolling array.
