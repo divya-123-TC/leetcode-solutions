@@ -1,0 +1,152 @@
+Coin Change II 
+🧩 Problem Overview
+
+You are given:
+
+An integer amount
+
+A list of coin denominations coins
+
+
+Your task is to compute:
+
+> The total number of unique combinations of coins that sum up to the amount.
+
+
+
+Important:
+
+Order does NOT matter → combinations, not permutations
+
+You have infinite supply of each coin
+
+If no combination is possible → return 0
+
+
+
+---
+
+🎯 Key Insight
+
+At each coin index i, you have two choices:
+
+1. Take the coin again
+
+amount increases
+
+stay at same index i (unlimited coins)
+
+
+
+2. Skip the coin
+
+move to next index i + 1
+
+total stays same
+
+
+
+
+This forms a natural DFS (depth-first search) tree.
+
+Since many subproblems repeat, we use memoization to speed up.
+
+
+ State Definition
+
+Define:
+
+dfs(i, a)
+
+Where:
+
+i = index of current coin
+
+a = current amount formed so far
+
+
+dfs(i, a) returns:
+
+> Number of ways to reach the final amount from this state.
+
+
+
+We store results in:
+
+cache[(i, a)]
+
+to avoid recomputation.
+
+
+
+ Base Cases Explained
+
+Condition	Meaning	Return
+
+a == amount	Perfect combination found	1
+a > amount	Amount exceeded	0
+i == len(coins)	No more coins left	0
+
+
+
+---
+
+🔄 Recursive Choices
+
+✔ 1. Use current coin
+
+dfs(i, a + coins[i])
+
+adds coin value
+
+stays at same index
+
+
+✔ 2. Skip current coin
+
+dfs(i + 1, a)
+
+moves to next coin
+
+amount unchanged
+
+
+Final result = sum of both choices.
+
+
+---
+
+🧠 Memoization
+
+To avoid recomputing states:
+
+cache[(i, a)] = result
+
+If the same (i, a) appears again, return cached value.
+
+This improves complexity from exponential → polynomial.
+
+
+---
+
+📊 Complexity Analysis
+
+Aspect	Value
+
+Time	~O(amount × number_of_coins)
+Space	O(amount × number_of_coins) for cache + recursion stack
+Approach	DFS + Memoization (Top-down DP)
+
+
+
+---
+
+🏁 Summary
+
+Use DFS to explore “take” and “skip” choices for each coin
+
+Memoize subproblems to avoid repeated work
+
+Base cases handle success, failure, and empty coin list
+
+Efficient and clean approach for combination-counting problems
