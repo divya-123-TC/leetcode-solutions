@@ -1,0 +1,86 @@
+Longest Common Subsequence 
+
+✅ Problem Statement
+
+Given two strings text1 and text2, return the length of their longest common subsequence (LCS).
+
+✔ What is a subsequence?
+
+A subsequence is a sequence that appears in the same order but not necessarily continuously.
+
+Example:
+
+text1 = "abcde"
+text2 = "ace"
+LCS = "ace"
+Length = 3
+
+
+---
+
+🧠 Approach: Dynamic Programming (Bottom-Up)
+
+We use a DP table where
+dp[i][j] represents:
+
+> Length of LCS between text1[i:] and text2[j:].
+
+
+
+DP Rules
+
+If characters match:
+
+dp[i][j] = 1 + dp[i+1][j+1]
+
+If characters don’t match:
+
+dp[i][j] = max(dp[i+1][j], dp[i][j+1])
+
+
+The final answer is in:
+
+dp[0][0]
+
+
+
+
+🔍 Example
+
+Input:
+text1 = "abcba"
+text2 = "abcbcba"
+
+Output:
+5
+
+LCS = "abcba"
+
+
+---
+
+⏱ Time & Space Complexity
+
+Complexity	Value
+
+Time	O(n × m)
+Space	O(n × m)
+
+
+Where
+
+n = len(text1)
+
+m = len(text2)
+
+
+
+
+
+🎯 Summary
+
+Uses dynamic programming.
+
+Builds a table from bottom to top.
+
+Returns the LCS length efficiently.
