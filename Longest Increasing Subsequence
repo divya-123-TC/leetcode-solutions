@@ -1,0 +1,81 @@
+Longest Increasing Subsequence 
+
+📌 Problem Statement
+
+Given an integer array nums, return the length of the Longest Increasing Subsequence (LIS).
+
+A subsequence is a sequence of elements selected from the array in the same order, but not necessarily continuous.
+
+✔ Example
+
+Input:
+nums = [10, 9, 2, 5, 3, 7, 101, 18]
+
+Output:
+4
+
+Explanation:
+The LIS is [2, 3, 7, 18] (length = 4)
+
+
+---
+
+🧠 Approach: Dynamic Programming
+
+We use a DP array named LIS where:
+
+LIS[i] = length of the longest increasing subsequence starting at index i
+
+
+Initially, every element is a subsequence of length 1, so:
+
+LIS = [1, 1, 1, ..., 1]
+
+We fill LIS from right to left (reverse order).
+For each element at index i, we check all elements to its right (j > i).
+If nums[i] < nums[j], we can extend the subsequence:
+
+LIS[i] = max(LIS[i], 1 + LIS[j])
+
+Finally, the answer is the maximum value in the LIS array.
+
+
+
+
+⏱ Time & Space Complexity
+
+Complexity	Explanation
+
+Time: O(n²)	Two nested loops (i and j)
+Space: O(n)	LIS array of size n
+
+
+
+---
+
+📚 Example Walkthrough
+
+For nums = [4, 10, 4, 3, 8, 9]:
+
+Index	Value	LIS Value
+
+5	9	1
+4	8	2 (8 → 9)
+3	3	3 (3 → 8 → 9)
+2	4	3 (4 → 8 → 9)
+1	10	1
+0	4	3
+
+
+Answer = 3
+
+
+---
+
+🏁 Conclusion
+
+The LIS problem is efficiently solved using Dynamic Programming.
+
+We compute LIS values from right to left.
+
+The maximum value in the LIS array gives the final answer.
