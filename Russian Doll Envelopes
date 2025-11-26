@@ -1,0 +1,65 @@
+ Russian Doll Envelopes
+
+📝 Problem Statement
+
+You are given a list of envelopes.
+Each envelope has width and height: (w, h)
+You can put an envelope into another only if:
+
+w1 < w2 AND h1 < h2
+
+Find the maximum number of envelopes that can be nested (Russian doll style).
+
+
+---
+
+🔍 Example
+
+Input:
+
+[[5,4], [6,4], [6,7], [2,3]]
+
+Output:
+
+3
+
+Explanation:
+
+(2,3) → (5,4) → (6,7)
+
+
+---
+
+💡 Approach (Optimal)
+
+1️⃣ Sort envelopes by:
+
+width ascending
+
+if width same → height descending
+
+
+2️⃣ Take only heights
+3️⃣ Find Longest Increasing Subsequence (LIS) in heights
+4️⃣ LIS length = answer ✔
+
+
+---
+
+🧠 Why descending height when same width?
+
+To avoid wrongly counting envelopes with same width as valid nestings.
+
+Example:
+
+(6,4) and (6,7) cannot nest because width same
+
+
+
+
+⏱ Complexity
+
+Type	Value
+
+Time	O(n log n)
+Space	O(n)
