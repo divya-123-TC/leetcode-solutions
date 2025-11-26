@@ -1,0 +1,55 @@
+ Decode Ways
+
+📝 Problem Statement
+
+Given a string containing digits, return how many ways it can be decoded.
+
+Mapping:
+
+1 → A, 2 → B, …, 26 → Z
+
+Example:
+
+"226" → 3 ways
+
+BF + F, V + F, B + Z
+
+
+---
+
+❌ Invalid Case
+
+If a digit is:
+
+"0" alone → cannot decode
+
+
+---
+
+🎯 Goal
+
+Count number of valid decoding combinations.
+
+
+---
+
+💡 Approach
+
+✔ Recursive DFS
+✔ Memoization (DP dictionary) to avoid repetition
+
+We check:
+
+Single digit decode
+
+Two digit decode if between 10–26
+
+
+
+
+⏱ Complexity
+
+Type	Value
+
+Time	O(n)
+Space	O(n)
