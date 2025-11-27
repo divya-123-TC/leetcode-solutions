@@ -1,0 +1,78 @@
+Maximal Square 
+📌 Problem Description
+
+You are given a 2D binary matrix filled with '0' and '1'.
+Your task is to find the largest square containing only 1s
+and return its area.
+
+
+---
+
+📝 Example
+
+Input:
+
+matrix =
+[
+  ["1","0","1","0","0"],
+  ["1","0","1","1","1"],
+  ["1","1","1","1","1"],
+  ["1","0","0","1","0"]
+]
+
+Output:
+
+4
+
+Explanation: The largest square of 1s has side length = 2, so area = 2 × 2 = 4.
+
+
+---
+
+🧠 Key Idea (Top-Down DP with Memoization)
+
+We use a recursive function helper(r, c) that returns:
+
+> The side length of the largest square starting at position (r, c)
+
+
+
+For each cell:
+
+If it is '1', then the square size depends on:
+
+down → (r+1, c)
+
+right → (r, c+1)
+
+diagonal → (r+1, c+1)
+
+
+
+We take:
+
+1 + min(down, right, diag)
+
+If cell is '0', value = 0.
+
+We store every result in cache to avoid recalculation → Memoization.
+
+
+---
+
+⏳ Complexity Analysis
+
+Approach	Time Complexity	Space Complexity
+
+Top-down DP + Memo	O(m × n)	O(m × n)
+
+
+Where m = rows, n = columns
+
+
+ Summary
+
+✔ We compute the maximum possible side length of a square from each cell
+✔ Return the largest area = side²
+✔ Efficient because of memoization
+✔ Very clean recursive DP approach
