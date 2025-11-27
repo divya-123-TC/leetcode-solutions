@@ -1,0 +1,81 @@
+Burst Balloons 
+
+📌 Problem Description
+
+You are given n balloons, each balloon has a number written on it.
+When you burst balloon i, you gain:
+
+nums[left] * nums[i] * nums[right]
+
+where left and right are the nearest balloons still remaining.
+
+After bursting balloon i, it disappears.
+The goal is to find the maximum coins you can collect by bursting balloons in the best order.
+
+
+---
+
+📝 Example
+
+Input:
+
+nums = [3,1,5,8]
+
+Output:
+
+167
+
+One optimal order: Burst 1 → Burst 5 → Burst 3 → Burst 8
+Total coins = 167
+
+
+---
+
+🧠 Key Insight
+
+Instead of choosing which balloon to burst first,
+we choose which balloon to burst last in each range.
+
+This allows us to split the problem:
+
+dfs(l, r) = max coins from bursting balloons in range [l, r]
+
+Try each i in [l, r] as the last balloon:
+
+coins = nums[l-1] * nums[i] * nums[r+1]
+coins += dfs(l, i-1)  # left side
+coins += dfs(i+1, r)  # right side
+
+Choose the best (max) among all choices.
+
+
+---
+
+🧩 Why Padding?
+
+We add 1 at the start and end:
+
+nums = [1] + nums + [1]
+
+This ensures boundaries always exist → no extra checks.
+
+
+---
+
+⏳ Complexity Analysis
+
+Approach	Time	Space
+
+DFS + DP (Memoization)	O(n³)	O(n²)
+
+
+
+ Summary
+
+Hard problem due to adjacency change after bursting.
+
+Think last balloon instead of first.
+
+Divide into left and right subproblems.
+
+Use Dynamic Programming + Memoization to avoid repetition.
