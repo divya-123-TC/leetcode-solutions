@@ -1,0 +1,53 @@
+ Regular Expression Matching
+
+
+
+## 🔹 Problem Statement
+
+Given a string s and a pattern p, implement regular expression matching with support for:
+
+| Symbol | Meaning |
+|--------|---------|
+| . | Matches exactly *one* character |
+| * | Matches *zero or more* of the previous character |
+
+The match must apply to the *entire* string s, not just a part of it.
+
+---
+
+### ✨ Examples
+
+| s | p | Output | Explanation |
+|---|---|--------|-------------|
+| "aa" | "a" | False | Pattern has only 1 a |
+| "aa" | "a*" | True | * allows multiple `a`s |
+| "ab" | ".*" | True | Match any characters |
+| "aab" | "c*a*b" | True | c* ignored, a* matches "aa" |
+| "mississippi" | "mis*is*p*." | False | Does not match fully |
+
+---
+
+## 🧠 Approach
+
+We use *Recursion + Memoization (Top-down DP)*:
+
+- solve(i, j) → does s[i:] match p[j:]?
+- Store results in a dictionary to avoid recalculations
+- Handle '*' using two choices:
+  1. Skip "x*" block → solve(i, j+2)
+  2. If first characters match → use "x*" again → solve(i+1, j)
+
+This ensures we try all valid pattern matching possibilities.
+
+---
+
+## 🧩 Python Code (Simple & Clean)
+
+
+
+📈 Complexity
+
+Type	Value
+
+Time Complexity	O(n * m) — because of memoization
+Space Complexity	O(n * m) — recursion + memo
