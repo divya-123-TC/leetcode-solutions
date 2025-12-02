@@ -1,0 +1,44 @@
+ Wildcard Matching
+
+🧠 Problem Summary
+
+Match string s with pattern p where:
+
+Pattern	Meaning
+
+?	Match exactly one character
+*	Match zero or more characters
+
+
+Goal → Entire string must match completely.
+
+
+---
+
+🧩 Approach — Recursion + Memoization + * Optimization
+
+✔ Remove consecutive stars: "" → ""
+✔ Use DP with memo to avoid repeated work
+✔ Each state (i, j) computed once
+
+
+---
+
+🧠 Complexity Analysis
+
+Let:
+
+n = len(s)
+
+m = len(p) after removing consecutive *
+
+
+Case	Explanation	Time	Space
+
+Best Case	Simple exact match or quick mismatch	O(n)	O(n+m)
+Average Case	Most pattern matches use memo	O(n × m)	O(n × m)**
+Worst Case	Many valid wildcard paths	O(n × m)	O(n × m)**
+
+
+📝 DP memo ensures recursion does not explode into exponential paths.
+
