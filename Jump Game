@@ -1,0 +1,24 @@
+ Jump Game
+
+### 🧠 Problem Summary
+Given an array nums, where each value represents the maximum jump length from that index, determine whether you can reach the *last index* starting from index 0.
+
+---
+
+### 🧩 Approach — Greedy from Right-to-Left
+We maintain the last reachable index (goal) and check if earlier indexes can reach it.  
+If goal becomes 0, the answer is True.
+
+---
+
+### 🧠 Time & Space Complexity
+
+| Case | Explanation | Time | Space |
+|------|-------------|------|-------|
+| Best Case | First index can already reach end | *O(1)* | O(1) |
+| Average Case | Each element checked once | *O(n)* | O(1) |
+| Worst Case | Need to check all elements | *O(n)* | O(1) |
+
+✔ Single loop, extremely efficient  
+✔ Ideal for interviews
+
