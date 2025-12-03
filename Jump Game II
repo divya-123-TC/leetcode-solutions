@@ -1,0 +1,48 @@
+Jump Game II
+
+🔹 Problem Summary
+You are given an integer array nums, where each element represents the *maximum jump length* from that index.
+
+Starting at index 0, return the *minimum number of jumps* required to reach the *last index*.
+
+You can always reach the last index.
+
+ Example 1
+
+Input: nums = [2,3,1,1,4] Output: 2 Explanation: Jump from 0 → 1 → 4 (end)
+
+### Example 2
+
+Input: nums = [2,3,0,1,4] Output: 2
+
+---
+
+## 💡 Approach — Greedy (Optimal)
+We explore jumps *level by level*, like BFS:
+
+- l and r mark the *current reachable range*
+- From that range, pick the *farthest* index we can reach next
+- That counts as *one jump*
+- Continue until we reach the last index
+
+This ensures *minimum jumps* are taken.
+
+---
+
+## ⏱ Complexity
+
+| Type | Complexity |
+|------|------------|
+| Time | *O(n)* — one full scan |
+| Space | *O(1)* — no extra memory |
+
+🔥 Best performance — Perfect for interviews!
+
+
+ Key Takeaways
+
+Always move to the index that lets you reach the farthest
+
+This greedy technique gives minimum jumps
+
+Similar thinking to BFS, but without extra memory
