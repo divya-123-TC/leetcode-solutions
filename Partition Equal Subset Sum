@@ -1,0 +1,69 @@
+
+Partition Equal Subset Sum
+
+## 🔹 Problem Summary
+You are given an integer array nums.  
+Your task is to determine whether the array can be *split into two subsets* such that:
+
+✔ Both subsets have *equal sum*  
+✔ Every element must be used in one subset
+
+---
+
+### 🧠 Key Insight
+If the *total sum* of array elements is *odd*,  
+then it is *not possible* to divide it into two equal parts.
+
+If the sum is *even*,  
+we check if there exists a *subset* with sum = total_sum / 2.
+
+This becomes a *Subset Sum Problem*.
+
+---
+
+### 🧪 Examples
+
+#### Example 1:
+
+Input: nums = [1,5,11,5] Output: true Explanation: 1 + 5 + 5 = 11 and remaining subset = 11
+
+#### Example 2:
+
+Input: nums = [1,2,3,5] Output: false Explanation: total = 11 → cannot split equally
+
+---
+
+## 💡 Approach — Dynamic Programming with Set
+
+We keep a set dp that stores all possible subset sums seen so far.  
+For each number:
+- We try including it → update possible sums
+- Check if we reached target early → return True
+
+This avoids full DP table → memory efficient!
+
+---
+
+## ⏱ Complexity
+
+| Aspect | Complexity |
+|--------|------------|
+| Time | *O(n × target)* worst case |
+| Space | *O(target)* using set |
+
+💡 Faster in practice due to early return True 💡
+
+ Key Takeaways
+
+This is a Subset Sum problem
+
+Convert problem to:
+→ Can we make sum(nums) // 2 using some elements?
+
+Use set DP for better space usage
+
+Very common interview question
+
+
+
+---
