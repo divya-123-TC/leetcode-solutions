@@ -1,0 +1,84 @@
+Stone Game
+📌 Problem Statement
+
+Alice and Bob play a game with piles of stones arranged in a row.
+
+The number of piles is even
+
+Each pile contains a positive number of stones
+
+Alice starts first
+
+In each turn, a player picks stones from either the leftmost or rightmost pile
+
+Both players play optimally
+
+ Return true if Alice wins the game, otherwise false.
+
+ Approach (Dynamic Programming)
+
+We use Dynamic Programming (DP) to solve this problem.
+
+Key Idea
+
+Let
+dp[i][j] = maximum score difference (current player − opponent)
+when playing with piles from index i to j.
+
+If dp[i][j] > 0, the current player can win
+
+Alice starts first, so we check dp[0][n-1]
+
+⚙️ Algorithm
+
+Create a 2D DP table dp[n][n]
+
+Base case:
+
+When i == j, only one pile exists
+
+So, dp[i][i] = piles[i]
+
+For longer ranges:
+
+Player can choose left or right pile
+
+Choose the option that maximizes score difference
+
+Formula
+dp[i][j] = max(
+    piles[i] - dp[i+1][j],
+    piles[j] - dp[i][j-1]
+)
+
+🧪 Example
+
+Input:
+
+piles = [5, 3, 4, 5]
+
+
+Output:
+
+true
+
+
+Alice can always collect more stones than Bob.
+
+
+
+⏱️ Complexity Analysis
+
+Time Complexity: O(n²)
+
+Space Complexity: O(n²)
+
+✅ Final Result
+
+If dp[0][n-1] > 0 → Alice wins
+
+Return true
+
+📝 Note
+
+Although this DP solution works perfectly, LeetCode 877 also has a mathematical shortcut where Alice always wins. However, this DP approach is useful for interviews and learning game theory DP problems.
