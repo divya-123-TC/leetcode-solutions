@@ -1,0 +1,34 @@
+Best Time to Buy and Sell Stock III
+
+Problem Summary
+You are given an array `prices` where `prices[i]` is the stock price on day `i`.
+
+You may complete at most **2 transactions**.
+
+Return the maximum profit.
+
+A transaction = Buy + Sell.
+
+---
+ Approach
+
+We track four states:
+
+- `buy1`  → Maximum profit after first buy  
+- `sell1` → Maximum profit after first sell  
+- `buy2`  → Maximum profit after second buy  
+- `sell2` → Maximum profit after second sell  
+
+We update these values for each price.
+
+
+##  Time Complexity
+O(n)
+
+##  Space Complexity
+O(1)
+
+
+
+
+
