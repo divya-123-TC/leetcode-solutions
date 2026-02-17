@@ -1,0 +1,32 @@
+Distinct Subsequences
+
+ Problem Summary
+Given two strings `s` and `t`, return the number of distinct subsequences of `s` which equals `t`.
+
+A subsequence means deleting characters without changing order.
+
+---
+
+Approach
+
+We use recursion + memoization (Dynamic Programming).
+
+At each position:
+
+- If characters match → two choices:
+  - Use the character
+  - Skip the character
+- If not match → skip character
+
+We store results in a cache to avoid recomputation.
+
+
+
+##  Time Complexity
+O(m × n)
+
+##  Space Complexity
+O(m × n)
+
+---
+
