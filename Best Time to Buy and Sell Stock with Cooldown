@@ -1,0 +1,41 @@
+Problem Summary
+
+You are given an array `prices` where `prices[i]` is the stock price on day `i`.
+
+You may complete as many transactions as you like (buy and sell multiple times), but:
+
+ After selling a stock, you must wait one day (cooldown) before buying again.
+
+Return the maximum profit.
+
+
+
+Approach (State-Based DP)
+
+We track three states:
+
+- `hold` → Maximum profit while holding a stock
+- `sold` → Profit after selling a stock today
+- `rest` → Profit while resting (doing nothing)
+
+Transitions:
+
+- `sold = hold + price`
+- `hold = max(hold, rest - price)`
+- `rest = max(rest, previous_sold)`
+
+This naturally enforces the cooldown rule.
+
+---
+
+##  Time Complexity
+
+O(n)
+
+We iterate through prices once.
+
+##  Space Complexity
+
+O(1)
+
+We use only three variables.
