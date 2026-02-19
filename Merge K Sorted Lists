@@ -1,0 +1,35 @@
+Merge K Sorted Lists
+Problem Summary
+
+Given k sorted linked lists, merge them into one sorted linked list.
+
+ Approach (Min Heap)
+
+At every step, we need the smallest node among k lists.
+We use a min heap (priority queue).
+
+Steps:
+
+Push first node of each list into heap.
+
+Pop smallest node.
+
+Attach to result.
+
+Push next node of same list.
+
+Repeat until heap is empty.
+
+
+
+Complexity
+
+Time: O(N log k)
+
+Space: O(k)
+
+Where:
+
+N = total number of nodes
+
+k = number of lists
