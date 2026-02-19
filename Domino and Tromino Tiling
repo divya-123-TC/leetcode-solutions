@@ -1,0 +1,29 @@
+ Domino and Tromino Tiling
+
+### Problem Summary
+Given a 2 × n board, count the number of ways to tile the board using:
+- Domino (2×1 or 1×2)
+- L-shaped Tromino
+
+Return answer modulo 10^9 + 7.
+
+
+
+###  Approach (Dynamic Programming)
+
+We observe the recurrence:
+
+dp[n] = 2 * dp[n-1] + dp[n-3]
+
+Base cases:
+dp[1] = 1  
+dp[2] = 2  
+dp[3] = 5  
+
+Instead of storing full DP array, we store only last 3 values.
+
+
+Complexity
+Time: O(n)
+
+Space: O(1)
