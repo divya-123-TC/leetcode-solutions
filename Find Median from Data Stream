@@ -1,0 +1,66 @@
+Find Median from Data Stream
+
+##  Problem Statement
+
+Design a data structure that supports the following operations:
+
+- `addNum(int num)` → Adds a number into the data structure.
+- `findMedian()` → Returns the median of all elements so far.
+
+The numbers are added one by one (like a stream of data).
+ What is Median?
+
+Median is the middle value after sorting the numbers.
+
+- If total numbers are odd → return middle number.
+- If total numbers are even → return average of two middle numbers.
+
+### Example:
+
+Input:
+```
+addNum(1)
+addNum(2)
+findMedian() → 1.5
+addNum(3)
+findMedian() → 2
+```
+
+---
+
+## 🚀 Optimal Approach – Two Heaps
+
+To efficiently calculate the median:
+
+- Use **Max Heap** → to store smaller half of numbers
+- Use **Min Heap** → to store larger half of numbers
+
+### Why Two Heaps?
+
+Because median divides numbers into two equal halves.
+
+We maintain:
+
+- All elements in max heap ≤ elements in min heap
+- Size difference between heaps ≤ 1
+
+
+
+## 🔍 How It Works
+
+1. Always insert new number into max heap (as negative).
+2. Move the largest number from max heap to min heap.
+3. Balance sizes so that max heap has equal or one more element.
+4. If total numbers are odd → median = top of max heap.
+5. If total numbers are even → median = average of tops of both heaps.
+
+---
+
+## ⏱ Time Complexity
+
+| Operation     | Complexity |
+|--------------|------------|
+| addNum()     | O(log n)   |
+| findMedian() | O(1)       |
+
+ 
